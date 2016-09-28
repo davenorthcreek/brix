@@ -16,7 +16,7 @@
 use \OAuth\Common\Storage\Session;
 use \OAuth\Common\Consumer\Credentials;
 use \Stratum\OAuth\OAuth2\Service\BullhornService;
-use Log;
+use \Log;
 
 namespace Stratum\Client;
 class Bullhorn {
