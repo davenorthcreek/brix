@@ -24,6 +24,14 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+  Route::get('/admin', 'CorporateUserController@index');
+  Route::get('/home', 'CorporateUserController@index');
+  Route::get('/refresh', 'CorporateUserController@refresh');
+  Route::get('/', 'CorporateUserController@index');
+  Route::post('/formresponse/confirm', ['uses'=>'FormResponseController@confirmValues', 'as'=>'confirmValues']);
+
+  /*
+
   // Authentication routes...
   Route::get('auth/login', 'Auth\AuthController@getLogin');
   Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -60,7 +68,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::controller('/profile', 'UsersController');
 
   });
+  */
 
 });
-
-Route::post('upload', 'UploadController@upload');

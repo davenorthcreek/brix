@@ -32,7 +32,6 @@ class FormResponseController extends Controller
         $data['form'] = $form;
         $data['formResult'] = $formResult;
         $data['candidate'] = $candidate;
-        $data['candidates'] = $cuc->load_candidates();
         $data['page_title'] = "New Candidate Form";
         return view('formresponse')->with($data);
     }

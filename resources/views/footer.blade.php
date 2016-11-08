@@ -6,5 +6,5 @@
       Built by <a href="http://northcreek.ca">North Creek</a>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="http://brix-api.websitepreview.com.au">Brix</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2016 <a href="http://brixprojects.com.au">Brix</a>.</strong> All rights reserved.
   </footer>

@@ -262,9 +262,6 @@ class QuestionMapping extends ModelObject
         echo "\n<div class='form-group'>";
         echo "\n<button class='btn btn-info btn-sm' style='pointer-events: none;'>".$qlabel."</button>";
         echo("\n<label for='$label'>$visible</label>\n");
-        if (strpos($qlabel, 'Q65') === 0) {
-            $visible = "Discipline";
-        }
         $file = $this->get("configFile");
         if ($type == 'boolean') {
             if ($answermap) {
@@ -426,8 +423,12 @@ class QuestionMapping extends ModelObject
                 $other .= "'>\n";
                 echo $other;
             }
-        } else if ($human == "Q18"|| $human == "Q110" || $human == "Q111") {
-            echo("<textarea class='form-control' name='$label' rows='4' placeholder='Enter...'>$val</textarea>");
+        } else if ($type == "Date") {
+            echo '<div class="input-group date">'."\n".'<div class="input-group-addon">'."\n";
+            echo '<i class="fa fa-calendar"></i>'."\n";
+            echo '</div><input type="text" class="form-control pull-right mydatepicker" id="';
+            echo $label.'" name="'.$label.'" value="'.$val.'">'."\n";
+            echo '</div>'."\n<!-- /.input group -->\n";
         } else if ($type == "upload") {
             echo("<input class='form-control' name='$label' type='file' value='".$val."'>");
         } else {

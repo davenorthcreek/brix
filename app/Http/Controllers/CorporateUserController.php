@@ -76,7 +76,7 @@ class CorporateUserController extends Controller
   }
 
   public function refresh() {
-      $this->flushCandidatesFromCache();
+      //$this->flushCandidatesFromCache();
       return $this->index();
   }
 
