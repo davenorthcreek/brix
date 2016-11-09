@@ -28,7 +28,9 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/home', 'CorporateUserController@index');
   Route::get('/refresh', 'CorporateUserController@refresh');
   Route::get('/', 'CorporateUserController@index');
+  Route::get('/register/{source}', 'FormResponseController@index');
   Route::post('/formresponse/confirm', ['uses'=>'FormResponseController@confirmValues', 'as'=>'confirmValues']);
+  Route::get('candidate/{id}/{source}', 'CandidateController@index');
 
   /*
 

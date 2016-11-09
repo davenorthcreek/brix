@@ -590,10 +590,10 @@ class Candidate extends ModelObject
         return $set;
     }
 
-    public function exportSummaryToHTML($form) {
-        echo '<div class="box box-primary">';
+    public function exportSummaryToHTML($form, $box_style) {
+        echo '<div class="box box-'.$box_style.'">';
         echo '<div class="box-header with-border">';
-        echo "\n\t<h3 class='box-title'>Candidate Data</h3>";
+        echo "\n\t<h3 class='box-title'>Your Information</h3>";
         echo "\n</div>";
         echo "\n<div class='box-body'>\n";
         echo "\n<div class='table-responsive'>";
@@ -603,7 +603,7 @@ class Candidate extends ModelObject
         echo "\n<th><label>Value</label></th>\n";
         echo "\n</tr></thead>";
         echo "\n<tbody>";
-        $summary = ["id", "firstName", "lastName", "email", "mobile", "phone", "customTextBlock3", "customText18", "customText19", "skillSet", "certifications"];
+        $summary = ["firstName", "lastName", "email", "mobile", "phone", "customTextBlock3", "customText18", "customText19", "skillSet", "certifications"];
         foreach ($summary as $item) {
             $value = '';
             if ($item == "dateOfBirth") {

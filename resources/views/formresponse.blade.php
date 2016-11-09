@@ -27,12 +27,13 @@
                     </div>
                 </div>
             @endif
-            <form method="post" id="confirmValues" action='{{route("confirmValues", ["id" => $id])}}' >
+            <form method="post" id="confirmValues" action='{{route("confirmValues", ["source" => $source])}}' >
                 {{csrf_field()}}
-                <input type='hidden' name='id' value="{{$id}}">
-            <div class="box box-primary">
+                <input type='hidden' name='source' value="{{$source}}">
+            <div class="box box-{{$box_style}}">
                 <div class="box-header with-border">
-                    <button class="btn btn-mini btn-primary pull-right btn-click-action masterbutton"
+                    <h1 class='box-title' style='font-weight:bold'>{{ $page_title or ""}}</h1>
+                    <button class="btn btn-mini btn-{{$box_style}} pull-right btn-click-action masterbutton"
                         data-widget="collapseAll" data-toggle="tooltip" title="Collapse/Expand All">
                         <i class='fa fa-plus'></i>
                     </button>
@@ -48,7 +49,7 @@
                 $label = $headers[$i];
                 ?>
 
-                <div class="box box-primary collapsed-box">
+                <div class="box box-{{$box_style}} collapsed-box">
                     <div class="box-header with-border">
                         <h3 class='box-title'>{{ $label }}</h3>
                         <div class="box-tools pull-right">
@@ -61,10 +62,10 @@
                     <div class="box-footer"></div><!-- /.box-footer-->
                 </div><!-- /.box -->
             @endfor
-            <div class="box box-primary">
+            <div class="box box-{{$box_style}}">
                 <div class="box-header with-border">
-                    <button type="submit" class="btn btn-danger" id="confirmV">Submit Values to BrixProjects</button>
-                    <button role="button" class="btn btn-mini btn-primary pull-right btn-click-action masterbutton"
+                    <button type="submit" class="btn btn-info" id="confirmV">Submit Values to {{$source}}</button>
+                    <button role="button" class="btn btn-mini btn-{{$box_style}} pull-right btn-click-action masterbutton"
                         data-widget="collapseAll" data-toggle="tooltip" title="Collapse/Expand All">
                         <i class='fa fa-plus'></i>
                     </button>

@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Brix Job Search</title>
+  <title>{{$source}} Job Search</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -23,12 +23,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect.
   -->
   <link rel="stylesheet" href="{{ asset("/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css") }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset("/bower_components/AdminLTE/dist/css/skins/skin-yellow.min.css") }}" type="text/css">
 
   <!-- https://tuts.codingo.me/upload-and-edit-image-using-croppic-jquery-plugin -->
-  <link rel="stylesheet" href="{{ asset ("bower_components/croppic/croppic.css") }}"/>
+  <link rel="stylesheet" href="{{ asset ("bower_components/croppic/assets/css/croppic.css") }}"/>
 
   <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="../../plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="{{ asset("/bower_components/AdminLTE/plugins/datepicker/datepicker3.css") }}">
   <!-- Select2 -->
   <link rel="stylesheet" href="{{ asset ("bower_components/AdminLTE/plugins/select2/select2.min.css") }}"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.8/select2-bootstrap.min.css" type="text/css"/>
@@ -60,7 +61,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-{{$colour}} sidebar-mini">
 <div class="wrapper">
 
   <!-- Header -->
@@ -71,17 +72,6 @@ desired effect
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-         {{ $page_title or "" }}
-        <small>{{ $page_description or null }}</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -112,7 +102,7 @@ desired effect
 <!-- AdminLTE App -->
 <script src="{{ asset ("/bower_components/AdminLTE/dist/js/app.min.js") }}"></script>
 
-<script src="{{ asset ("bower_components/croppic/croppic.min.js") }}"></script>
+<script src="{{ asset ("/bower_components/croppic/croppic.min.js") }}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

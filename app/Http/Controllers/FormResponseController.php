@@ -18,7 +18,7 @@ use Mail;
 
 class FormResponseController extends Controller
 {
-    public function index($id) {
+    public function index($source) {
         $cuc = new CorporateUserController();
         $controller = new \Stratum\Controller\FormController();
         $ccontroller = new \Stratum\Controller\CandidateController();
@@ -27,19 +27,19 @@ class FormResponseController extends Controller
         $formResult = new \Stratum\Model\FormResult();
         $formResult->set("form", $form);
         $candidate = new \Stratum\Model\Candidate();
-        $candidate->set("id", $id);
         //expand/collapse all button
         $data['form'] = $form;
         $data['formResult'] = $formResult;
         $data['candidate'] = $candidate;
-        $data['page_title'] = "New Candidate Form";
+        $data['page_title'] = "Register with $source";
+        $data = $this->setupColours($source, $data);
         return view('formresponse')->with($data);
     }
 
 
 
     public function confirmValues(Request $request) {
-        $id = $request->input("id");
+        $source = $request->input("source");
         $fc = new \Stratum\Controller\FormController();
         $cc = new \Stratum\Controller\CandidateController();
         $cuc = new CorporateUserController();
@@ -48,6 +48,7 @@ class FormResponseController extends Controller
         $formResult->set("form", $form);
         $candidate = new \Stratum\Model\Candidate();
         $candidate = $cc->populateFromRequest($candidate, $request->all(), $formResult);
+        $candidate->set("customText20", $source);
 
         //$data['message'] = 'Debugging only, nothing uploaded to Bullhorn';
 
@@ -60,11 +61,27 @@ class FormResponseController extends Controller
         } else {
             $data['message'] = "Data Uploaded";
         }
-        $data['candidates'] = $cuc->load_candidates();
-        $data['thecandidate'] = $candidate;
         $fc = new \Stratum\Controller\FormController();
         $data['form'] = $fc->setupForm();
-
+        $data = $this->setupColours($source, $data);
+        $data['thecandidate'] = $candidate;
         return view('candidate')->with($data);
+    }
+
+    private function setupColours($source, $data) {
+        if ($source == "Brix") {
+            $colour = "blue";
+            $box = "primary";
+            $home = "http://www.brixprojects.com.au/";
+        } else {
+            $colour = "yellow";
+            $box = "warning";
+            $home = "http://www.advancedgroupservices.com.au/";
+        }
+        $data['colour'] = $colour;
+        $data['box_style'] = $box;
+        $data['home'] = $home;
+        $data['source'] = $source;
+        return $data;
     }
 }

@@ -34,7 +34,7 @@ class CandidateController extends Controller
       return $candidate;
   }
 
-  public function show($id) {
+  public function show($id, $source) {
       $message = "Candidate Information";
       $candidate = $this->load($id);
       $data['thecandidate'] = $candidate;
@@ -43,6 +43,15 @@ class CandidateController extends Controller
       $cuc = new CorporateUserController();
       $data['candidates'] = $cuc->load_candidates();
       $data['message'] = $message;
+      if ($source == "Brix") {
+          $colour = "blue";
+          $box = "primary";
+      } else {
+          $colour = "yellow";
+          $box = "warning";
+      }
+      $data['colour'] = $colour;
+      $data['box_style'] = $box;
       return view('candidate')->with($data);
   }
 

@@ -55,16 +55,9 @@ class CandidateController
 	public function getIdentity($candidate, $formResult) {
 		$name = '';
 		//extract reference number, name from form result
-		$id = $formResult->findByWorldApp("Candidate Ref Number");
 		$candidate->set("name", $this->extractName($formResult));
-		if ($id) {
-			$candidate->set("id", $id[0]);
-		} else {
-			//hardcode this
-			$candidate->set("id", 10413); //matches Mickey Mouse
-		}
+
 		$this->log_debug("Getting identity for ".$candidate->get("name"));
-		$this->log_debug("With ID: ".$candidate->get("id"));
 		//$candidate->dump();
 		return $candidate;
 	}
@@ -205,13 +198,8 @@ class CandidateController
         $address = [];
         $address2 = [];
         $note = [];
-        $id = $req["id"];
-        //for customText20
-        $pt1 = "";
-        $pt2 = "";
         // end of customText20 specific values
         $ctb5 = []; //customTextBlock5
-        $this->log_debug($id);
         $this->var_debug($req);
         foreach ($req as $jointkey=>$values) {
             $this->log_debug("key: $jointkey");

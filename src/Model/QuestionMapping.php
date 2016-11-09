@@ -260,7 +260,7 @@ class QuestionMapping extends ModelObject
         $label = htmlentities($label, ENT_QUOTES);
         $visible = htmlentities($visible, ENT_QUOTES);
         echo "\n<div class='form-group'>";
-        echo "\n<button class='btn btn-info btn-sm' style='pointer-events: none;'>".$qlabel."</button>";
+        //echo "\n<button class='btn btn-info btn-sm' style='pointer-events: none;'>".$qlabel."</button>";
         echo("\n<label for='$label'>$visible</label>\n");
         $file = $this->get("configFile");
         if ($type == 'boolean') {
@@ -338,9 +338,6 @@ class QuestionMapping extends ModelObject
                 }
             }
             echo "<select class='form-control select2";
-            if ($human == "Q57" || $human == "Q62") {
-                echo " $human";
-            }
             echo "' ";
             if ($type == 'multichoice') {
                 echo "multiple='multiple'";
@@ -348,54 +345,13 @@ class QuestionMapping extends ModelObject
             echo " id='$label' data-placeholder='$visible' name='$label'";
             echo " style='width: 100%;'";
             echo ">\n";
-            if ($human != "Q57" && $human != "Q62") {
-                echo "<option></option>\n"; //empty option
-                //empty option messes up "All Listed" option
-            }
             $qmap2 = $questionMaps[$human];
-            if ($human == "Q103") {
-                $my103 = false;
-                if ($valueMap) {
-                    foreach (array_keys($valueMap) as $vm) {
-                        if ($vm) {
-                            //don't overwrite
-                            $my103 = true;
-                        }
-                    }
-                }
-                if (!$my103) {
-                    $valueMap['Yes'] = true;
-                }
-            }
-            if ($human == "Q104") {
-                $my104 = false;
-                if ($valueMap) {
-                    foreach (array_keys($valueMap) as $vm) {
-                        if ($vm) {
-                            //don't overwrite
-                            $my104 = true;
-                        }
-                    }
-                }
-                if (!$my104) {
-                    $valueMap['No'] = true;
-                }
-            }
             foreach ($qmap2->get('answerMappings') as $amap) {
                 $aval = $amap->get("Value");
-                if ($human == "Q23") {
-                    $aval = preg_replace("/ \(.*\)/", "", $aval); //everything within parentheses
-                }
-                if ($human == "Q65") {
-                    $aval = preg_replace("/: /", ":", $aval); //remove space after colon
-                }
                 if ($aval && $aval != "All Listed") { //skip the all listed option
                     echo "<option ";
                     if ($valueMap) {
                         foreach (array_keys($valueMap) as $vm) {
-                            if ($human == "Q65") {
-                                $vm = preg_replace("/: /", ":", $vm); //remove space after colon
-                            }
                             if ($all_listed  || substr($vm, 0, strlen($aval)) === $aval) {
                                 $this->log_debug("Found $vm matching $aval in $human");
                                 echo "SELECTED ";

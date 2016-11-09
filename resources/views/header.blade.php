@@ -2,11 +2,11 @@
 <header class="main-header">
 
   <!-- Logo -->
-  <a href="{{url("/home")}}" class="logo">
+  <a href="{{url("/register/$source")}}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><b>B</b>rix</span>
+    <span class="logo-mini">{{substr($source, 0,4)}}</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>Brix</b> Job Search</span>
+    <span class="logo-lg"><b>{{$source}}</b> Job Search</span>
   </a>
 
   <!-- Header Navbar -->
