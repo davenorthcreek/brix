@@ -40,12 +40,15 @@ class FormResponseController extends Controller
 
     public function confirmValues(Request $request) {
         $source = $request->input("source");
+        Log::debug("Source is $source");
+
         $fc = new \Stratum\Controller\FormController();
         $cc = new \Stratum\Controller\CandidateController();
         $cuc = new CorporateUserController();
         $form = $fc->setupForm();
         $formResult = new \Stratum\Model\FormResult();
         $formResult->set("form", $form);
+
         $candidate = new \Stratum\Model\Candidate();
         $candidate = $cc->populateFromRequest($candidate, $request->all(), $formResult);
         $candidate->set("customText20", $source);
@@ -60,6 +63,20 @@ class FormResponseController extends Controller
             $data['message'] = "Problem uploading data";
         } else {
             $data['message'] = "Data Uploaded";
+            //file handling
+            foreach ($_FILES as $label=>$thefile) {
+                $filename = $thefile['name'][0];
+                $filesize = $thefile['size'][0];
+                $filepath = $thefile['tmp_name'][0];
+                $filebody = file_get_contents($filepath);
+                if (strpos($label, 'resume') !== false) {
+                    //file2, the resume
+                    $type = "Resume";
+                } else {
+                    $type = "H&SGCIC(White Card)";
+                }
+                $bc->submit_file_as_string($candidate, $filename, $filebody, $type);
+            }
         }
         $fc = new \Stratum\Controller\FormController();
         $data['form'] = $fc->setupForm();

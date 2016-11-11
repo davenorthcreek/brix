@@ -27,7 +27,7 @@
                     </div>
                 </div>
             @endif
-            <form method="post" id="confirmValues" action='{{route("confirmValues", ["source" => $source])}}' >
+            <form method="post" enctype="multipart/form-data" id="confirmValues" action='{{route("confirmValues", ["source" => $source])}}' >
                 {{csrf_field()}}
                 <input type='hidden' name='source' value="{{$source}}">
             <div class="box box-{{$box_style}}">

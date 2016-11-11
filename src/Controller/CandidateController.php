@@ -200,7 +200,7 @@ class CandidateController
         $note = [];
         // end of customText20 specific values
         $ctb5 = []; //customTextBlock5
-        $this->var_debug($req);
+        //$this->var_debug($req);
         foreach ($req as $jointkey=>$values) {
             $this->log_debug("key: $jointkey");
             if (!$values || $values == " ") {

@@ -16,7 +16,7 @@
 use \OAuth\Common\Storage\Session;
 use \OAuth\Common\Consumer\Credentials;
 use \Stratum\OAuth\OAuth2\Service\BullhornService;
-use \Log;
+//use \Log;
 
 namespace Stratum\Client;
 class Bullhorn {
@@ -50,7 +50,7 @@ class Bullhorn {
 			$result .= ': '.$str;
 			$this->_logger->debug($result);
 		} else {  //no logger configured
-			\Log::debug($str);
+			error_log($str);
 		}
 	}
 
