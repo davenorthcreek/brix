@@ -13,12 +13,13 @@
  * @author David Block dave@northcreek.ca
  */
 
+namespace Stratum\Client;
+
 use \OAuth\Common\Storage\Session;
 use \OAuth\Common\Consumer\Credentials;
 use \Stratum\OAuth\OAuth2\Service\BullhornService;
-//use \Log;
+use Log;
 
-namespace Stratum\Client;
 class Bullhorn {
 
 	function var_debug($object=null) {
@@ -50,7 +51,7 @@ class Bullhorn {
 			$result .= ': '.$str;
 			$this->_logger->debug($result);
 		} else {  //no logger configured
-			error_log($str);
+			Log::debug($str);
 		}
 	}
 
@@ -484,8 +485,14 @@ class Bullhorn {
 				$object = true;
 			}
 		}
+		if (!$addr_country) {
+			$addr_country='Australia';
+			$country_ID=2194;
+		}
 		if ($addr_country) {
-			$country_ID = $this->lookup_country($addr_country);
+			if (!$country_ID) {
+				$country_ID = $this->lookup_country($addr_country);
+			}
 			if ($object) {
 				$addr = $candidate->get("address");
 				$addr->set("countryID", $country_ID);
@@ -502,12 +509,18 @@ class Bullhorn {
 				$second_country = $addr2->get("countryID");
 			}
 		}
+		if (!$second_country) {
+			$second_country='Australia';
+			$second_ID=2194;
+		}
 		if ($second_country) {
-			if ($second_country == $addr_country) {
-				//skip unnecessary duplicate lookup
-				$second_ID = $country_ID;
-			} else {
-				$second_ID = $this->lookup_country($second_country);
+			if (!$second_ID) {
+				if ($second_country == $addr_country) {
+					//skip unnecessary duplicate lookup
+					$second_ID = $country_ID;
+				} else {
+					$second_ID = $this->lookup_country($second_country);
+				}
 			}
 			if ($object) {
 				$addr2 = $candidate->get("secondaryAddress");
@@ -539,9 +552,8 @@ class Bullhorn {
 		$decoded = $this->extract_json($result);
 		$this->log_debug("Create new candidate has response: ");
 		$this->var_debug($decoded);
-		if (array_key_exists('error', $decoded)) {
-			$this->log_debug("Candidate creation failed with problem ".$decoded['error']);
-			die("Candidate creation failed with problem ".$decoded['error']."\n");
+		if (array_key_exists('errorMessage', $decoded)) {
+			$this->log_debug("Candidate creation failed with problem ".$decoded['errorMessage']);
 		} else {
 			$newId = $decoded['changedEntityId'];
 			$candidate->set("id", $newId);

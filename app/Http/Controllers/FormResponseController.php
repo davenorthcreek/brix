@@ -52,30 +52,41 @@ class FormResponseController extends Controller
         $candidate = new \Stratum\Model\Candidate();
         $candidate = $cc->populateFromRequest($candidate, $request->all(), $formResult);
         $candidate->set("customText20", $source);
+        $candidate->getName(); //triggers setting name value
 
-        //$data['message'] = 'Debugging only, nothing uploaded to Bullhorn';
-
-        $bc = new \Stratum\Controller\BullhornController();
-        $retval = $bc->submit($candidate);
-        if (array_key_exists("errorMessage", $retval)) {
-            $data['errormessage']['message'] = $retval['errorMessage'];
-            $data['errormessage']['errors'] = $retval['errors'];
-            $data['message'] = "Problem uploading data";
+        Log::debug("confirming required values present");
+        $missing = $candidate->missingRequired();
+        if ($missing) {
+            $data['errormessage']['message'] = "Missing Required Values";
+            $data['errormessage']['errors'][0]['propertyName'] = $missing;
+            $data['errormessage']['errors'][0]['severity'] = 'Required Value';
+            $data['errormessage']['errors'][0]['type'] = 'No Value Found';
+            $data['message'] = "Unable to upload your data";
         } else {
-            $data['message'] = "Data Uploaded";
-            //file handling
-            foreach ($_FILES as $label=>$thefile) {
-                $filename = $thefile['name'][0];
-                $filesize = $thefile['size'][0];
-                $filepath = $thefile['tmp_name'][0];
-                $filebody = file_get_contents($filepath);
-                if (strpos($label, 'resume') !== false) {
-                    //file2, the resume
-                    $type = "Resume";
-                } else {
-                    $type = "H&SGCIC(White Card)";
+            $bc = new \Stratum\Controller\BullhornController();
+            $retval = $bc->submit($candidate);
+            if (array_key_exists("errorMessage", $retval)) {
+                $data['errormessage']['message'] = $retval['errorMessage'];
+                $data['errormessage']['errors'] = $retval['errors'];
+                $data['message'] = "Problem uploading data";
+            } else {
+                $data['message'] = "Data Uploaded";
+                //file handling
+                foreach ($_FILES as $label=>$thefile) {
+                    $filename = $thefile['name'][0];
+                    $filesize = $thefile['size'][0];
+                    $filepath = $thefile['tmp_name'][0];
+                    if ($filepath) {
+                        $filebody = file_get_contents($filepath);
+                        if (strpos($label, 'resume') !== false) {
+                            //file2, the resume
+                            $type = "Resume";
+                        } else {
+                            $type = "H&SGCIC(White Card)";
+                        }
+                        $bc->submit_file_as_string($candidate, $filename, $filebody, $type);
+                    }
                 }
-                $bc->submit_file_as_string($candidate, $filename, $filebody, $type);
             }
         }
         $fc = new \Stratum\Controller\FormController();

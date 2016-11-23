@@ -165,6 +165,10 @@ class Candidate extends ModelObject
                           'files'=>'',
                           'validated'=>''
 						  ];
+    protected $required = ['address',
+                           'firstName',
+                           'lastName'];
+
 
 	//OVERRIDE
 	public function set($attribute, $value) {
@@ -557,6 +561,23 @@ class Candidate extends ModelObject
 		$this->log_debug($encoded);
 		return $encoded;
 	}
+
+    public function missingRequired() {
+        foreach ($this->_fields as $attr=>$value) {
+            if (in_array($attr, $this->required)) {
+                if (!$this->get($attr)) {
+                    $this->log_debug($attr." is required and was NOT found");
+                    return $attr;
+                } else {
+                    $this->log_debug($attr." is required and was found");
+                }
+            } else {
+                $this->var_debug($attr);
+                $this->log_debug("was not required");
+            }
+        }
+        return null;
+    }
 
 
 	public function compare(\Stratum\Model\ModelObject $other) {
