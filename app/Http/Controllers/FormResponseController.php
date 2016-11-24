@@ -52,7 +52,7 @@ class FormResponseController extends Controller
         $candidate = new \Stratum\Model\Candidate();
         $candidate = $cc->populateFromRequest($candidate, $request->all(), $formResult);
         $candidate->set("customText20", $source);
-        $candidate->getName(); //triggers setting name value
+        Log::debug("received ".$candidate->getName()); //triggers setting name value
 
         Log::debug("confirming required values present");
         $missing = $candidate->missingRequired();

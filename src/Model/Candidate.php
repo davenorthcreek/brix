@@ -167,7 +167,9 @@ class Candidate extends ModelObject
 						  ];
     protected $required = ['address',
                            'firstName',
-                           'lastName'];
+                           'lastName',
+                           'name',
+                          ];
 
 
 	//OVERRIDE
