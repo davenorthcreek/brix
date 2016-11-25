@@ -6,7 +6,7 @@
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">{{substr($source, 0,4)}}</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>{{$source}}</b> Job Search</span>
+    <span class="logo-lg"><b>{{$source}}</b> Registration Form</span>
   </a>
 
   <!-- Header Navbar -->
