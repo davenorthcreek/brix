@@ -120,7 +120,11 @@
 
     //Date picker
     $('.mydatepicker').datepicker({
-      autoclose: true
+         todayBtn: "linked",
+         language: "en-UK",
+         autoclose: true,
+         todayHighlight: true,
+         format: 'dd/mm/yyyy'
     });
 
 
