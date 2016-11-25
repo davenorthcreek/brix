@@ -345,6 +345,7 @@ class QuestionMapping extends ModelObject
             echo " id='$label' data-placeholder='$visible' name='$label'";
             echo " style='width: 100%;'";
             echo ">\n";
+            echo "<option VALUE=''></option>";
             $qmap2 = $questionMaps[$human];
             foreach ($qmap2->get('answerMappings') as $amap) {
                 $aval = $amap->get("Value");
