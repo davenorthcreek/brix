@@ -1,0 +1,167 @@
+Section Personal Details
+brix00rf0001	Text	namePrefix	Title (Mr, Ms, Miss, Mrs)
+brix00rf0002	Text	firstName	First Name
+brix00rf0003	Text	lastName	Last Name
+brix00rf0004	Text	address(address1)	Street Address
+brix00rf0005	Text	address(city)	Suburb
+brix00rf0006	Text	address(state)	State
+brix00rf0007	Text	address(zip)	Post Code
+brix00rf0008	Text	phone	Home Phone
+brix00rf0009	Text	mobile	Mobile Phone
+brix00rf0010	Text	email	Email
+brix00rf0011	Date	dateOfBirth	Birthdate
+brix00rf0012	choice	customText1	Were you born outside of Australia?
+brix00rf0012.A1	No
+brix00rf0012.A2	Yes
+brix00rf0013	Text	customText14	What is your nationality?
+brix00rf0014	Text	customText17	Passport Number
+brix00rf0015	choice	source	How did you hear about us?
+brix00rf0015.A1	Internet Search
+brix00rf0015.A2	Website
+brix00rf0015.A3	SEEK.com.au
+brix00rf0015.A4	Gumtree
+brix00rf0015.A5	Facebook
+brix00rf0015.A6	Advert in Hostel
+brix00rf0015.A7	Mining Links
+brix00rf0015.A8	Friend
+brix00rf0015.A9	Other
+Section Next of Kin
+brix00rf0016	Text	customText4	Name
+brix00rf0017	Text	customText13	Contact Number
+Section Bank Information
+brix00rf0022	Text	customText3	BSB
+brix00rf0023	Text	customText5	Account Number
+Section Tax Information
+brix00rf0024	Text	customText18	TFN
+brix00rf0025	Text	customText11	ABN
+Section Super Information
+brix00rf0026	Text	customText19	Super Fund
+brix00rf0029	Text	customText7	Super Membership Number
+Section Professional Details
+brix00rf0030	Text	customTextBlock3	Occupation
+brix00rf0032	choice	occupation	Primary Position
+brix00rf0032.A1	Aluminium/Glazer
+brix00rf0032.A2	Asbestos Removalist
+brix00rf0032.A3	Boilermaker/Welder
+brix00rf0032.A4	Brick/Block Layer
+brix00rf0032.A5	Carpenter
+brix00rf0032.A6	Civil Engineer
+brix00rf0032.A7	Civil Labourer
+brix00rf0032.A8	Concrete Patcher
+brix00rf0032.A9	Concrete Pump Operator
+brix00rf0032.A10	Concreter
+brix00rf0032.A11	Confined Space Labourer
+brix00rf0032.A12	Crane Operator
+brix00rf0032.A13	Demolition Labourer
+brix00rf0032.A14	Diesel Mechanic
+brix00rf0032.A15	Dogman
+brix00rf0032.A16	Electrical Trade Assistant
+brix00rf0032.A17	Electrician
+brix00rf0032.A18	Excavator Operator
+brix00rf0032.A19	Forklift Operator
+brix00rf0032.A20	Formworker
+brix00rf0032.A21	General Labourer
+brix00rf0032.A22	HC/HM Operator
+brix00rf0032.A23	Hoist Operator
+brix00rf0032.A24	HR/MR Operator
+brix00rf0032.A25	Mechanical Fitter
+brix00rf0032.A26	Metal Fabricator
+brix00rf0032.A27	NBN Worker
+brix00rf0032.A28	Pipelayer
+brix00rf0032.A29	Plasterer
+brix00rf0032.A30	Plumber
+brix00rf0032.A31	Renderer
+brix00rf0032.A32	Rigger
+brix00rf0032.A33	RISI Labourer
+brix00rf0032.A34	Scaffolder
+brix00rf0032.A35	Labourer
+brix00rf0032.A36	Steelfixer
+brix00rf0032.A37	Sheet Metal Worker
+brix00rf0032.A38	Tiler
+brix00rf0032.A39	Trade Assistant
+brix00rf0032.A40	Traffic Controller
+brix00rf0032.A41	Other
+brix00rf0034	multichoice	customTextBlock2	Current Tickets and Licenses
+brix00rf0034.A1	Asbestos ID + Awareness
+brix00rf0034.A2	Asbestos – Class A
+brix00rf0034.A3	Asbestos – Class B
+brix00rf0034.A4	Ausgrid Passport
+brix00rf0034.A5	Backhoe/Loader
+brix00rf0034.A6	Bobcat
+brix00rf0034.A7	Builders Licence
+brix00rf0034.A8	Confined Space
+brix00rf0034.A9	Slewing Mobile Crane (60 Tonnes)
+brix00rf0034.A10	Non Slewing Mobile Crane (Above 3 Tons)
+brix00rf0034.A11	CV Crane
+brix00rf0034.A12	Tower Crane
+brix00rf0034.A13	Truck Mount Crane
+brix00rf0034.A14	Pendant Crane
+brix00rf0034.A15	Demolition License
+brix00rf0034.A16	Dogging (DG)
+brix00rf0034.A17	Dogging – Carry Out Load Slinging
+brix00rf0034.A18	Dozer
+brix00rf0034.A19	Electrical License
+brix00rf0034.A20	Energy Endeavour Passport
+brix00rf0034.A21	EWP
+brix00rf0034.A22	Excavator
+brix00rf0034.A23	First Aid – Basic
+brix00rf0034.A24	First Aid – Senior
+brix00rf0034.A25	First Aid – CPR
+brix00rf0034.A26	Forklift (LF)
+brix00rf0034.A27	Front End Loader
+brix00rf0034.A28	Grader
+brix00rf0034.A29	Hoist – Materials Hoist
+brix00rf0034.A30	Hoist – Personnel & Materials Hoist
+brix00rf0034.A31	HR
+brix00rf0034.A32	MR
+brix00rf0034.A33	NBN InductioncustomTextBlock
+brix00rf0034.A34	Rail Industry Worker (Pegasus)
+brix00rf0034.A35	Restricted Demolition License
+brix00rf0034.A36	Rigging – Basic (RB)
+brix00rf0034.A37	Rigging – Intermediate Rigging (RI)
+brix00rf0034.A38	Rigging – Advanced Rigging (RA)
+brix00rf0034.A39	RISI
+brix00rf0034.A40	Roller
+brix00rf0034.A41	Scaffolding Basic (SB)
+brix00rf0034.A42	Intermediate Scaffolding
+brix00rf0034.A43	Advanced Scaffolding
+brix00rf0034.A44	Skid steer
+brix00rf0034.A45	Spotter
+brix00rf0034.A46	Telescopic Materials Handler
+brix00rf0034.A47	Traffic Management
+brix00rf0034.A48	H&S General Construction (White Card)
+brix00rf0034.A49	Working Safely at Heights
+brix00rf0034.A50	Yellow Card – Scissor Lift
+brix00rf0034.A51	Yellow Card – Under 11 Meters
+brix00rf0034.A52	Other
+brix00rf0086    Text	customTextBlock3   Please specify any other tickets or licenses you have
+brix00rf0087	Date	dateAvailable	When will you be available for work?
+brix00rf0088	multichoice	customText15	Please select your preferred working hours (you may select more than one option)
+brix00rf0088.A1	Day Shift
+brix00rf0088.A2	Night Shift
+brix00rf0088.A3	Weekends
+brix00rf0091	choice	customText16	Do you have your own transportation?
+brix00rf0091.A1	No
+brix00rf0091.A2	Yes
+brix00rf0092	Text	customText8	Please provide your drivers license number
+Section Attachments
+brix00rf0093	upload	file1	Please attach your Health & Safety General Construction Induction Card (White Card)
+brix00rf0094	upload	file2	Please attach your resume if you have one
+Section Reference 1
+brix00rf0096	multiple	recommender1	Reference 1
+brix00rf0096.A1	Text	referenceName	Reference Name
+brix00rf0096.A2	Text	referenceTitle	Reference Position
+brix00rf0096.A3	Text	referencePhone	Phone No:
+brix00rf0096.A4	Text	companyName Company
+brix00rf0096.A5	Text	candidateTitle	Position Held
+brix00rf0096.A6	Date	employmentStart Start Date
+brix00rf0096.A7	Date	employmentEnd   End Date
+Section Reference2
+brix00rf0103	multiple	recommender2	Reference 2
+brix00rf0103.A1	Text	referenceName	Reference Name
+brix00rf0103.A2	Text	referenceTitle	Reference Position
+brix00rf0103.A3	Text	referencePhone	Phone No:
+brix00rf0103.A4	Text	companyName	Company
+brix00rf0103.A5	Text	candidateTitle	Position Held
+brix00rf0103.A6	Date	employmentStart	Start Date
+brix00rf0103.A7	Date	employmentEnd	End Date
