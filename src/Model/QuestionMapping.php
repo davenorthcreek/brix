@@ -256,6 +256,16 @@ class QuestionMapping extends ModelObject
             $answermap = $questionMaps[$qlabel];
         }
 
+        $required = false;
+        if ($candidate->isRequired($bh)) {
+            $visible .= " *";
+            $required = true;
+        }
+
+        /******************************/
+        /* We are now ready to output */
+        /******************************/
+
         $qlabel = htmlentities($qlabel, ENT_QUOTES);
         $label = htmlentities($label, ENT_QUOTES);
         $visible = htmlentities($visible, ENT_QUOTES);
@@ -389,7 +399,11 @@ class QuestionMapping extends ModelObject
         } else if ($type == "upload") {
             echo("<input class='form-control' name='$label' type='file' value='".$val."'>");
         } else {
-            echo("<input class='form-control' name='$label' type='text' value='".$val."'>");
+            echo("<input class='form-control' name='$label' type='text' value='".$val."'");
+            if ($required) {
+                echo 'required="true"';
+            }
+            echo ">";
         }
             //}
         echo "\n</div>\n";

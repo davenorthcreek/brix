@@ -22,6 +22,7 @@ class Candidate extends ModelObject
      * @var array of tag/values
      */
     protected $_fields = ['name'=>'',
+						  'nameSuffix'=>'',
 						  'mobile'=>'',
 						  'id'=>'',
 						  'address'=>'',
@@ -114,7 +115,6 @@ class Candidate extends ModelObject
 						  'massMailOptOut'=>'',
 						  'middleName'=>'',
 						  'namePrefix'=>'',
-						  'nameSuffix'=>'',
 						  'nickName'=>'',
 						  'numCategories'=>'',
 						  'numOwners'=>'',
@@ -169,6 +169,9 @@ class Candidate extends ModelObject
                            'firstName',
                            'lastName',
                            'name',
+                           'nameSuffix',
+                           'mobile',
+                           'email'
                           ];
 
 
@@ -231,6 +234,7 @@ class Candidate extends ModelObject
 		} else if (count($name_split) == 2) {
 			$this->set("lastName", $name_split[1]);
 		}
+        $this->set("nameSuffix", $name);
 		return $this;
 	}
 
@@ -263,6 +267,7 @@ class Candidate extends ModelObject
         }
         $name_attr->set("value", $name);
         //parent::set("name",$name); //no re-setting sub-names
+        $this->set("nameSuffix", $name);
 		return $name;
 	}
 
@@ -564,6 +569,10 @@ class Candidate extends ModelObject
 		return $encoded;
 	}
 
+    public function isRequired($attr) {
+        return (in_array($attr, $this->required));
+    }
+
     public function missingRequired() {
         foreach ($this->_fields as $attr=>$value) {
             if (in_array($attr, $this->required)) {
@@ -573,9 +582,6 @@ class Candidate extends ModelObject
                 } else {
                     $this->log_debug($attr." is required and was found");
                 }
-            } else {
-                $this->var_debug($attr);
-                $this->log_debug("was not required");
             }
         }
         return null;
