@@ -97,7 +97,7 @@ class FormResponseController extends Controller
     }
 
     private function setupColours($source, $data) {
-        if ($source == "Brix") {
+        if (strcasecmp($source, "brix") == 0) {
             $colour = "blue";
             $box = "primary";
             $home = "http://www.brixprojects.com.au/";
