@@ -29,8 +29,8 @@ Section Next of Kin
 brix00rf0016	Text	customText4	Name
 brix00rf0017	Text	customText13	Contact Number
 Section Personal History
-brix00rf0018    Text    Note    Text    Have you ever failed a medical exam?
-brix00rf0019    Text    Note    Text    Have you ever failed a drug test?
+brix00rf0018    Text    Note    Have you ever failed a medical exam?
+brix00rf0019    Text    Note    Have you ever failed a drug test?
 Section Bank Information
 brix00rf0022	Text	customText3	BSB
 brix00rf0023	Text	customText5	Account Number

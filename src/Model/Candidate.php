@@ -169,7 +169,6 @@ class Candidate extends ModelObject
                            'firstName',
                            'lastName',
                            'name',
-                           'nameSuffix',
                            'mobile',
                            'email'
                           ];
@@ -234,7 +233,7 @@ class Candidate extends ModelObject
 		} else if (count($name_split) == 2) {
 			$this->set("lastName", $name_split[1]);
 		}
-        $this->set("nameSuffix", $name);
+        //$this->set("nameSuffix", $name);
 		return $this;
 	}
 
@@ -267,7 +266,7 @@ class Candidate extends ModelObject
         }
         $name_attr->set("value", $name);
         //parent::set("name",$name); //no re-setting sub-names
-        $this->set("nameSuffix", $name);
+        //$this->set("nameSuffix", $name);
 		return $name;
 	}
 
