@@ -319,16 +319,6 @@ class CandidateController
                 //build a Note object, PUT it with an association to the Candidate
                 if ($this->endsWith($waan, "Yes") || $this->endsWith($waan, "No")) {
                     $waan = substr($waan, 0, strrpos($waan, ' '));
-                }
-                if ($waan == "Form is Correct and Accurate") {
-                    if ($values[0] == "yes") {
-                        $candidate->set("validated", 'true');
-                    } else {
-                        $candidate->set("validated", 'false');
-                    }
-                }
-                if ($waan == "Call Availability") {
-                    //already submitted as a note when candidate uploaded (UploadController)
                 } else {
                     foreach ($values as $val) {
                         if (is_array($val)) {
@@ -343,6 +333,7 @@ class CandidateController
                                 }
                             } // if no value in "Other", do nothing
                         } else {
+                            $this->log_debug("Note: $waan: $val");
                             $note[] = "$waan: $val";
                         }
                     }
@@ -470,7 +461,7 @@ class CandidateController
         $this->loadReferencesFromRequest($candidate, $refs);
         $this->loadCustomObjectFromRequest($candidate, $cos);
         $this->loadAddressesFromRequest($candidate, $address, $address2);
-
+        $this->loadNoteFromRequest($candidate, $note);
         return $candidate;
     }
 
@@ -541,6 +532,22 @@ class CandidateController
         $candidate->set("address", $add1);
         $candidate->set("secondaryAddress", $add2);
     }
+
+    private function loadNoteFromRequest($candidate, $note) {
+        $existing = $candidate->get("Note");
+        $newNote = [];
+        $comment = "";
+        if ($existing) {
+            $comment = $existing["comments"];
+        }
+        foreach ($note as $noteDetail) {
+            $comment .= $noteDetail."\n";
+        }
+        $newNote["comments"] = $comment;
+        $newNote["action"] = "Uploaded Information";
+        $candidate->set("Note", $newNote);
+    }
+
 
     private function loadCustomObjectFromRequest($candidate, $cos) {
         foreach ($cos as $index=>$co) {
