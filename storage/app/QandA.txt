@@ -10,7 +10,7 @@ brix00rf0008	Text	phone	Home Phone
 brix00rf0009	Text	mobile	Mobile Phone
 brix00rf0010	Text	email	Email
 brix00rf0011	Date	dateOfBirth	Birthdate
-brix00rf0012	choice	customText1	Were you born outside of Australia?
+brix00rf0012	choice	NULL	Were you born outside of Australia?
 brix00rf0012.A1	No
 brix00rf0012.A2	Yes
 brix00rf0013	Text	customText14	What is your nationality?
@@ -28,6 +28,9 @@ brix00rf0015.A9	Other
 Section Next of Kin
 brix00rf0016	Text	customText4	Name
 brix00rf0017	Text	customText13	Contact Number
+Section Personal History
+brix00rf0018    Text    Note    Text    Have you ever failed a medical exam?
+brix00rf0019    Text    Note    Text    Have you ever failed a drug test?
 Section Bank Information
 brix00rf0022	Text	customText3	BSB
 brix00rf0023	Text	customText5	Account Number
@@ -114,7 +117,7 @@ brix00rf0034.A29	Hoist – Materials Hoist
 brix00rf0034.A30	Hoist – Personnel & Materials Hoist
 brix00rf0034.A31	HR
 brix00rf0034.A32	MR
-brix00rf0034.A33	NBN InductioncustomTextBlock
+brix00rf0034.A33	NBN Induction
 brix00rf0034.A34	Rail Industry Worker (Pegasus)
 brix00rf0034.A35	Restricted Demolition License
 brix00rf0034.A36	Rigging – Basic (RB)
@@ -134,7 +137,6 @@ brix00rf0034.A49	Working Safely at Heights
 brix00rf0034.A50	Yellow Card – Scissor Lift
 brix00rf0034.A51	Yellow Card – Under 11 Meters
 brix00rf0034.A52	Other
-brix00rf0086    Text	customTextBlock3   Please specify any other tickets or licenses you have
 brix00rf0087	Date	dateAvailable	When will you be available for work?
 brix00rf0088	multichoice	customText15	Please select your preferred working hours (you may select more than one option)
 brix00rf0088.A1	Day Shift
