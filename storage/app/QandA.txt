@@ -68,79 +68,89 @@ brix00rf0032.A18	Excavator Operator
 brix00rf0032.A19	Forklift Operator
 brix00rf0032.A20	Formworker
 brix00rf0032.A21	General Labourer
-brix00rf0032.A22	HC/HM Operator
-brix00rf0032.A23	Hoist Operator
-brix00rf0032.A24	HR/MR Operator
-brix00rf0032.A25	Mechanical Fitter
-brix00rf0032.A26	Metal Fabricator
-brix00rf0032.A27	NBN Worker
-brix00rf0032.A28	Pipelayer
-brix00rf0032.A29	Plasterer
-brix00rf0032.A30	Plumber
-brix00rf0032.A31	Renderer
-brix00rf0032.A32	Rigger
-brix00rf0032.A33	RISI Labourer
-brix00rf0032.A34	Scaffolder
-brix00rf0032.A35	Labourer
-brix00rf0032.A36	Steelfixer
-brix00rf0032.A37	Sheet Metal Worker
-brix00rf0032.A38	Tiler
-brix00rf0032.A39	Trade Assistant
-brix00rf0032.A40	Traffic Controller
-brix00rf0032.A41	Other
+brix00rf0032.A22	Gyprocker
+brix00rf0032.A23	HC/HM Operator
+brix00rf0032.A24	Hoist Operator
+brix00rf0032.A25	HR/MR Operator
+brix00rf0032.A26	Mechanical Fitter
+brix00rf0032.A27	Metal Fabricator
+brix00rf0032.A28	NBN Worker
+brix00rf0032.A29	Pipelayer
+brix00rf0032.A30	Plasterer
+brix00rf0032.A31	Plumber
+brix00rf0032.A32	Renderer
+brix00rf0032.A33	Rigger
+brix00rf0032.A34	RISI Labourer
+brix00rf0032.A35	RIW Labourer
+brix00rf0032.A36	Scaffolder
+brix00rf0032.A37	Labourer
+brix00rf0032.A38	Steelfixer
+brix00rf0032.A39	Sheet Metal Worker
+brix00rf0032.A40	Ticketed Labourer
+brix00rf0032.A41	Tiler
+brix00rf0032.A42	Trade Assistant
+brix00rf0032.A43	Traffic Controller
+brix00rf0032.A44	Other
 brix00rf0034	multichoice	customTextBlock2	Current Tickets and Licenses
-brix00rf0034.A1	Asbestos ID + Awareness
-brix00rf0034.A2	Asbestos – Class A
-brix00rf0034.A3	Asbestos – Class B
-brix00rf0034.A4	Ausgrid Passport
-brix00rf0034.A5	Backhoe/Loader
-brix00rf0034.A6	Bobcat
-brix00rf0034.A7	Builders Licence
-brix00rf0034.A8	Confined Space
-brix00rf0034.A9	Slewing Mobile Crane (60 Tonnes)
-brix00rf0034.A10	Non Slewing Mobile Crane (Above 3 Tons)
-brix00rf0034.A11	CV Crane
-brix00rf0034.A12	Tower Crane
-brix00rf0034.A13	Truck Mount Crane
-brix00rf0034.A14	Pendant Crane
-brix00rf0034.A15	Demolition License
-brix00rf0034.A16	Dogging (DG)
-brix00rf0034.A17	Dogging – Carry Out Load Slinging
-brix00rf0034.A18	Dozer
-brix00rf0034.A19	Electrical License
-brix00rf0034.A20	Energy Endeavour Passport
-brix00rf0034.A21	EWP
-brix00rf0034.A22	Excavator
-brix00rf0034.A23	First Aid – Basic
-brix00rf0034.A24	First Aid – Senior
-brix00rf0034.A25	First Aid – CPR
-brix00rf0034.A26	Forklift (LF)
-brix00rf0034.A27	Front End Loader
-brix00rf0034.A28	Grader
-brix00rf0034.A29	Hoist – Materials Hoist
-brix00rf0034.A30	Hoist – Personnel & Materials Hoist
-brix00rf0034.A31	HR
-brix00rf0034.A32	MR
-brix00rf0034.A33	NBN Induction
-brix00rf0034.A34	Rail Industry Worker (Pegasus)
-brix00rf0034.A35	Restricted Demolition License
-brix00rf0034.A36	Rigging – Basic (RB)
-brix00rf0034.A37	Rigging – Intermediate Rigging (RI)
-brix00rf0034.A38	Rigging – Advanced Rigging (RA)
-brix00rf0034.A39	RISI
-brix00rf0034.A40	Roller
-brix00rf0034.A41	Scaffolding Basic (SB)
-brix00rf0034.A42	Intermediate Scaffolding
-brix00rf0034.A43	Advanced Scaffolding
-brix00rf0034.A44	Skid steer
-brix00rf0034.A45	Spotter
-brix00rf0034.A46	Telescopic Materials Handler
-brix00rf0034.A47	Traffic Management
-brix00rf0034.A48	H&S General Construction (White Card)
-brix00rf0034.A49	Working Safely at Heights
-brix00rf0034.A50	Yellow Card – Scissor Lift
-brix00rf0034.A51	Yellow Card – Under 11 Meters
-brix00rf0034.A52	Other
+brix00rf0034.A1	Acciona Inducted
+brix00rf0034.A2	Asbestos ID + Awareness
+brix00rf0034.A3	Asbestos – Class A
+brix00rf0034.A4	Asbestos – Class B
+brix00rf0034.A5	Ausgrid Passport
+brix00rf0034.A6	Backhoe/Loader
+brix00rf0034.A7	Bobcat
+brix00rf0034.A8	Boom Lift
+brix00rf0034.A9	Builders Licence
+brix00rf0034.A10	Confined Space
+brix00rf0034.A11	Slewing Mobile Crane (60 Tonnes)
+brix00rf0034.A12	Non Slewing Mobile Crane (Above 3 Tons)
+brix00rf0034.A13	CV Crane
+brix00rf0034.A14	Tower Crane
+brix00rf0034.A15	Truck Mount Crane
+brix00rf0034.A16	Pendant Crane
+brix00rf0034.A17	Demolition License
+brix00rf0034.A18	Dogging (DG)
+brix00rf0034.A19	Dogging – Carry Out Load Slinging
+brix00rf0034.A20	Dozer
+brix00rf0034.A21	Dump Truck
+brix00rf0034.A22	Electrical License
+brix00rf0034.A23	Energy Endeavour Passport
+brix00rf0034.A24	EWP
+brix00rf0034.A25	Excavator
+brix00rf0034.A26	First Aid – Basic
+brix00rf0034.A27	First Aid – Senior
+brix00rf0034.A28	First Aid – CPR
+brix00rf0034.A29	Forklift (LF)
+brix00rf0034.A30	Front End Loader
+brix00rf0034.A31	Grader
+brix00rf0034.A32	Hoist – Materials Hoist
+brix00rf0034.A33	Hoist – Personnel & Materials Hoist
+brix00rf0034.A34	HR
+brix00rf0034.A35	MR
+brix00rf0034.A36	NBN Induction
+brix00rf0034.A37	North Connex Inducted
+brix00rf0034.A38	North West Rail-Link Inducted
+brix00rf0034.A39	Rail Industry Worker (Pegasus)
+brix00rf0034.A40	Restricted Demolition License
+brix00rf0034.A41	Rigging – Basic (RB)
+brix00rf0034.A42	Rigging – Intermediate Rigging (RI)
+brix00rf0034.A43	Rigging – Advanced Rigging (RA)
+brix00rf0034.A44	RISI
+brix00rf0034.A45	Roller
+brix00rf0034.A46	Scaffolding Basic (SB)
+brix00rf0034.A47	Intermediate Scaffolding
+brix00rf0034.A48	Advanced Scaffolding
+brix00rf0034.A49	Skid steer
+brix00rf0034.A50	Spotter
+brix00rf0034.A51	Spotter Ticket
+brix00rf0034.A52	Telescopic Materials Handler
+brix00rf0034.A53	Traffic Management
+brix00rf0034.A54	H&S General Construction (White Card)
+brix00rf0034.A55	West Connex Inducted
+brix00rf0034.A56	Working Safely at Heights
+brix00rf0034.A57	Yellow Card – Scissor Lift
+brix00rf0034.A58	Yellow Card – Under 11 Meters
+brix00rf0034.A59	Other
 brix00rf0087	Date	dateAvailable	When will you be available for work?
 brix00rf0088	multichoice	customText15	Please select your preferred working hours (you may select more than one option)
 brix00rf0088.A1	Day Shift
