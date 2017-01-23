@@ -426,9 +426,9 @@ class Bullhorn {
 		$bullhornService = $this->service;
 
 		$fieldList = $candidate->getBullhornFieldList();
-
+		$id = $candidate->get("id");
 		$find_uri = $bullhornService->getFindUri($this->base_url, $this->session_key, $candidate->get("id"), $fieldList);
-		$this->log_debug("Looking for Candidate ID ".$candidate->get("id")."");
+		$this->log_debug("Looking for Candidate ID $id");
 		//$this->var_debug($find_uri);
 		$client = $this->httpClient;
 		$response = $client->retrieveResponse($find_uri, '', [], 'GET');
@@ -446,6 +446,23 @@ class Bullhorn {
 			$this->var_debug($decoded_cand);
 		}
 		return $candidate;
+	}
+
+	public function findByEmail($email) {
+		$bullhornService = $this->service;
+		$find_uri = $bullhornService->getSearchCandidateUri($this->base_url, $this->session_key, "email", $email);
+		$client = $this->httpClient;
+		$response = $client->retrieveResponse($find_uri, '', [], 'GET');
+		$decoded_list = $this->extract_json($response);
+		$id = null;
+		if (array_key_exists("data", $decoded_list)) {
+			$list_of_ids = $decoded_list["data"];
+			if (count($list_of_ids) > 0) {
+				$id = $list_of_ids[0]["id"];
+				$this->log_debug("found id $id for email $email");
+			}
+		}
+		return $id;
 	}
 
 	private function lookup_country($country) {

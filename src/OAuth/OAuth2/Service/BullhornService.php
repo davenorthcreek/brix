@@ -287,6 +287,11 @@ class BullhornService extends AbstractService
 		return $this->getFindEntityUri("Candidate", $base_url, $session_key, $id, $fieldList);
 	}
 
+    public function getFindByEmailUri($base_url, $session_key, $email, $fieldList) {
+        $this->log_debug("Session Key: ".$session_key);
+		return $this->getSearchUri($base_url, $session_key, $email);
+	}
+
 	public function getSearchUri($base_url, $session_key, $query, $count=1) {
 		//https://rest.bullhorn.com/rest-services/e999/find?query=smith&countPerEntity=3
 		$uri = new Uri($base_url."find");
@@ -295,6 +300,18 @@ class BullhornService extends AbstractService
 		$uri->addToQuery("countPerEntity", $count);
 		return $uri;
 	}
+
+    public function getSearchCandidateUri($base_url, $session_key, $search_field, $query) {
+        //https://rest32.bullhornstaffing.com/rest-services/274e9s/search/Candidate?query=email:mickey@mousehouse.com.au&fields=id,email,name&sort=-id&count=10&start=0&...
+        $uri = new Uri($base_url."search/Candidate");
+        $uri->addToQuery("BhRestToken", $session_key);
+        $uri->addToQuery("query", "$search_field:$query");
+        $uri->addToQuery("fields", "id");
+        $uri->addToQuery("start", 0);
+        //$uri->addToQuery("useV2", "true");
+        $uri->addToQuery("count", 500);
+        return $uri;
+    }
 
     public function getAssocCandidatesUri($base_url, $session_key, $owner_id, $fieldList, $constraint) {
         //https://rest22.bullhornstaffing.com/rest-services/987up/search/Candidate?query=owner.id:10237&fields=firstName,lastName,id,owner&useV2=true

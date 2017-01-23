@@ -64,6 +64,12 @@ class FormResponseController extends Controller
             $data['message'] = "Unable to upload your data";
         } else {
             $bc = new \Stratum\Controller\BullhornController();
+            $email = $candidate->get("email");
+            $prev_id = $bc->findByEmail($email);
+            if ($prev_id) {
+                $candidate->set("id", $prev_id); //will trigger update rather than create
+                Log::debug("updating $prev_id rather than creating a new candidate based on $email");
+            }
             $retval = $bc->submit($candidate);
             if (array_key_exists("errorMessage", $retval)) {
                 $data['errormessage']['message'] = $retval['errorMessage'];

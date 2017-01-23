@@ -164,6 +164,12 @@ class BullhornController {
 		return $candidate;
 	}
 
+	public function findByEmail($email) {
+		$bullhornClient = $this->getClient();
+		$candidate_id = $bullhornClient->findByEmail($email);
+		return $candidate_id;
+	}
+
 	public function submit_files(\Stratum\Model\Candidate $candidate) {
 		$bullhornClient = $this->getClient();
 		$bullhornClient->submit_files($candidate);
