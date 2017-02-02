@@ -63,34 +63,43 @@ class FormResponseController extends Controller
             $data['errormessage']['errors'][0]['type'] = 'No Value Found';
             $data['message'] = "Unable to upload your data";
         } else {
-            $bc = new \Stratum\Controller\BullhornController();
-            $email = $candidate->get("email");
-            $prev_id = $bc->findByEmail($email);
-            if ($prev_id) {
-                $candidate->set("id", $prev_id); //will trigger update rather than create
-                Log::debug("updating $prev_id rather than creating a new candidate based on $email");
-            }
-            $retval = $bc->submit($candidate);
-            if (array_key_exists("errorMessage", $retval)) {
-                $data['errormessage']['message'] = $retval['errorMessage'];
-                $data['errormessage']['errors'] = $retval['errors'];
-                $data['message'] = "Problem uploading data";
+            $dateError = $candidate->errorInBirthDate();
+            if ($dateError) {
+                $data['errormessage']['message'] = "Properly Formatted Birth Date Required";
+                $data['errormessage']['errors'][0]['propertyName'] = "dateOfBirth";
+                $data['errormessage']['errors'][0]['severity'] = 'Required Value';
+                $data['errormessage']['errors'][0]['type'] = "Improperly Formatted Value: $dateError";
+                $data['message'] = "Unable to upload your data";
             } else {
-                $data['message'] = "Data Uploaded";
-                //file handling
-                foreach ($_FILES as $label=>$thefile) {
-                    $filename = $thefile['name'][0];
-                    $filesize = $thefile['size'][0];
-                    $filepath = $thefile['tmp_name'][0];
-                    if ($filepath) {
-                        $filebody = file_get_contents($filepath);
-                        if (strpos($label, 'resume') !== false) {
-                            //file2, the resume
-                            $type = "Resume";
-                        } else {
-                            $type = "H&SGCIC(White Card)";
+                $bc = new \Stratum\Controller\BullhornController();
+                $email = $candidate->get("email");
+                $prev_id = $bc->findByEmail($email);
+                if ($prev_id) {
+                    $candidate->set("id", $prev_id); //will trigger update rather than create
+                    Log::debug("updating $prev_id rather than creating a new candidate based on $email");
+                }
+                $retval = $bc->submit($candidate);
+                if (array_key_exists("errorMessage", $retval)) {
+                    $data['errormessage']['message'] = $retval['errorMessage'];
+                    $data['errormessage']['errors'] = $retval['errors'];
+                    $data['message'] = "Problem uploading data";
+                } else {
+                    $data['message'] = "Data Uploaded";
+                    //file handling
+                    foreach ($_FILES as $label=>$thefile) {
+                        $filename = $thefile['name'][0];
+                        $filesize = $thefile['size'][0];
+                        $filepath = $thefile['tmp_name'][0];
+                        if ($filepath) {
+                            $filebody = file_get_contents($filepath);
+                            if (strpos($label, 'resume') !== false) {
+                                //file2, the resume
+                                $type = "Resume";
+                            } else {
+                                $type = "H&SGCIC(White Card)";
+                            }
+                            $bc->submit_file_as_string($candidate, $filename, $filebody, $type);
                         }
-                        $bc->submit_file_as_string($candidate, $filename, $filebody, $type);
                     }
                 }
             }

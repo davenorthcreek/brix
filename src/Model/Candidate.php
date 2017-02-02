@@ -170,7 +170,8 @@ class Candidate extends ModelObject
                            'lastName',
                            'name',
                            'mobile',
-                           'email'
+                           'email',
+                           'dateOfBirth'
                           ];
 
 
@@ -586,6 +587,20 @@ class Candidate extends ModelObject
         return null;
     }
 
+    public function errorInBirthDate() {
+        $format = "d/m/Y";
+        $this->log_debug("Checking Birthdate " . $this->get("dateOfBirth"));
+        $dateobj = \DateTime::createFromFormat($format, $this->get("dateOfBirth"));
+        $errors = \DateTime::getLastErrors();
+        $this->var_debug($errors);
+        if ($errors['error_count'] > 0) {
+            return implode(". ", $errors['errors']);
+        }
+        if ($errors['warning_count'] > 0) {
+            return implode(". ", $errors['warnings']);
+        }
+        return null;
+    }
 
 	public function compare(\Stratum\Model\ModelObject $other) {
 		$same = true;
