@@ -78,6 +78,8 @@ class FormResponseController extends Controller
                     $candidate->set("id", $prev_id); //will trigger update rather than create
                     Log::debug("updating $prev_id rather than creating a new candidate based on $email");
                 }
+                //Brix is using customDate2 for birthdate despite the presence of the dateOfBirth field
+                $candidate->set("customDate2", $candidate->get("dateOfBirth"));
                 $retval = $bc->submit($candidate);
                 if (array_key_exists("errorMessage", $retval)) {
                     $data['errormessage']['message'] = $retval['errorMessage'];
