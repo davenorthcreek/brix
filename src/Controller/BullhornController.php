@@ -219,7 +219,7 @@ class BullhornController {
 	public function deleteCandidate(\Stratum\Model\Candidate $candidate) {
 		$bullhornClient = $this->getClient();
 		$candidate->set("isDeleted", "true");
-		$retval = $bullhornClient->submit_candidate($candidate);
+		$retval = $bullhornClient->update_candidate($candidate);
 
 		//returns an array with 'error' or 'id' and other data
 		return $retval;
