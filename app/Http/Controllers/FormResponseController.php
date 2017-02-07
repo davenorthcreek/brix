@@ -75,6 +75,9 @@ class FormResponseController extends Controller
                 $email = $candidate->get("email");
                 $prev_id = $bc->findByEmail($email);
                 if ($prev_id) {
+                    if (is_array($prev_id)) {
+                        $prev_id = $prev_id[0];
+                    }
                     $candidate->set("id", $prev_id); //will trigger update rather than create
                     Log::debug("updating $prev_id rather than creating a new candidate based on $email");
                 }

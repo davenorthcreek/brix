@@ -450,11 +450,11 @@ class Bullhorn {
 	}
 
 	public function findByEmail($email) {
-		return findByField("email", $email);
+		return $this->findByField("email", $email);
 	}
 
 	public function findByField($field, $value) {
-		return findByQuery("$field:$value");
+		return $this->findByQuery("$field:$value");
 	}
 
 	public function findByQuery($query) {
