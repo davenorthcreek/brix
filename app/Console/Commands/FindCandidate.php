@@ -105,10 +105,26 @@ class FindCandidate extends Command
     }
 
     private function displayAndEdit($id) {
+        $reset = false;
 
         if ($this->updateFlag) {
             $candidate = $this->displayCandidate($id, false);
             if ($this->transfer) {
+                $newValue = $candidate->get($this->transferFrom);
+                $oldValue = $candidate->get($this->transferTo);
+                Log::debug("$this->transferFrom to $this->transferTo: $oldValue will become $newValue");
+                if ($newValue || $oldValue) {
+                    //there is a new value, or the request is to blank the
+                    //old value
+                    Log::debug("Will Update ".$this->transferTo);
+                    $this->updateValue = $newValue;
+                } else {
+                    //no value in either field
+                    //update would be a wasted operation
+                    Log::debug("Will skip update for $id");
+                    $reset = true;
+                    $this->updateFlag = false;
+                }
                 $this->updateField = $this->transferTo;
                 $this->updateValue = $candidate->get("transferFrom");
             }
@@ -119,6 +135,9 @@ class FindCandidate extends Command
         $this->checkForDelete($id);
 
         $this->checkForUpdate($id);
+        if ($reset) {
+            $this->parseOptions();
+        }
     }
 
     private function displayCandidate($id, $muteFlag) {
@@ -133,6 +152,10 @@ class FindCandidate extends Command
         } else {
             foreach(array_unique(explode(",", $this->fields[0])) as $f) {
                 $this->info($f . ": ". $candidate->get($f));
+                if (preg_match("/date/i", $f)) {
+                    Log::debug($f);
+                    Log::debug($candidate->get($f));
+                } 
             }
         }
         return $candidate;
