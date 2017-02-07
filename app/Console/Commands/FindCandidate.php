@@ -28,7 +28,7 @@ class FindCandidate extends Command
      * @var string
      */
     protected $signature = 'findCandidate {id?} {--delete} {--mute}"
-    .   " {--query=} {--transferFrom=} {--transferTo=} {--fields=*}'
+    .   " {--query=} {--sql=} {--transferFrom=} {--transferTo=} {--fields=*}'
     .   " {--updateField=} {--updateValue=}";
 
     /**
@@ -60,10 +60,23 @@ class FindCandidate extends Command
         $candidate = new Candidate();
         $id = $this->argument('id');
         $query = $this->option('query');
+        $sql = $this->option('sql');
         if ($id) {
             $this->displayAndEdit($id);
         } else if ($query) {
             $data = $this->client->findByQuery($query);
+            if (is_array($data)) {
+                Log::debug($data);
+                foreach($data as $anId) {
+                    $this->info("Found candidate $anId");
+                    $this->displayAndEdit($anId);
+                }
+            } else {
+                $this->info("Found candidate $data");
+                $this->displayAndEdit($data);
+            }
+        } else if ($sql) {
+            $data = $this->client->findBySql($sql);
             if (is_array($data)) {
                 Log::debug($data);
                 foreach($data as $anId) {
@@ -126,7 +139,6 @@ class FindCandidate extends Command
                     $this->updateFlag = false;
                 }
                 $this->updateField = $this->transferTo;
-                $this->updateValue = $candidate->get("transferFrom");
             }
         } else {
             $candidate = $this->displayCandidate($id, $this->muteFlag);
@@ -155,7 +167,7 @@ class FindCandidate extends Command
                 if (preg_match("/date/i", $f)) {
                     Log::debug($f);
                     Log::debug($candidate->get($f));
-                } 
+                }
             }
         }
         return $candidate;
@@ -177,7 +189,7 @@ class FindCandidate extends Command
                 $updated = $this->update($id);
             }
             if ($updated) {
-                $this->displayCandidate($id, $muteFlag);
+                $this->displayCandidate($id, $this->muteFlag);
             }
         }
     }
@@ -187,7 +199,7 @@ class FindCandidate extends Command
         $candidate->set("id", $id);
         $candidate->set($this->updateField, $this->updateValue);
         $response = $this->client->updateCandidate($candidate);
-        $this->displayResponse("Update", $response);
+        return $this->displayResponse("Update", $response);
     }
 
     private function displayResponse($type, $response) {
@@ -227,7 +239,7 @@ class FindCandidate extends Command
         $candidate = new Candidate();
         $candidate->set("id", $id);
         $response = $this->client->deleteCandidate($candidate);
-        $this->displayResponse("Deletion", $response);
+        return $this->displayResponse("Deletion", $response);
     }
 
 }

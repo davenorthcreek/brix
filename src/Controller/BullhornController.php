@@ -169,6 +169,12 @@ class BullhornController {
 		return $candidate;
 	}
 
+	public function findBySql($sql) {
+		$bullhornClient = $this->getClient();
+		$candidate_id = $bullhornClient->findBySql($sql);
+		return $candidate_id;
+	}
+
 	public function findByQuery($query) {
 		$bullhornClient = $this->getClient();
 		$candidate_id = $bullhornClient->findByQuery($query);

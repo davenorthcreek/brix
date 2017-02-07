@@ -477,6 +477,26 @@ class Bullhorn {
 		return $ids;
 	}
 
+	public function findBySql($query) {
+		$bullhornService = $this->service;
+		$find_uri = $bullhornService->getSQLQueryCandidateUri($this->base_url, $this->session_key, $query);
+		$this->log_debug($find_uri->__toString());
+		$client = $this->httpClient;
+		$response = $client->retrieveResponse($find_uri, '', [], 'GET');
+		$decoded_list = $this->extract_json($response);
+		$this->var_debug($response);
+		$ids = [];
+		if (array_key_exists("data", $decoded_list)) {
+			$list_of_ids = $decoded_list["data"];
+			foreach($list_of_ids as $idHolder) {
+				$id = $idHolder["id"];
+				$ids[] = $id;
+				$this->log_debug("found id $id with query $query");
+			}
+		}
+		return $ids;
+	}
+
 
 
 	private function lookup_country($country) {

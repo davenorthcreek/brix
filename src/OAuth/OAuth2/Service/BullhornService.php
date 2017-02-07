@@ -313,6 +313,18 @@ class BullhornService extends AbstractService
         return $uri;
     }
 
+    public function getSQLQueryCandidateUri($base_url, $session_key, $query) {
+        //https://rest32.bullhornstaffing.com/rest-services/274e9s/query/Candidate?where=id=%20337228%20AND%20status='Active'&fields=id,email,name&sort=-id&count=10&start=0&...
+        $uri = new Uri($base_url."query/Candidate");
+        $uri->addToQuery("BhRestToken", $session_key);
+        $uri->addToQuery("where", $query);
+        $uri->addToQuery("fields", "id");
+        $uri->addToQuery("start", 0);
+        //$uri->addToQuery("useV2", "true");
+        $uri->addToQuery("count", 50);
+        return $uri;
+    }
+
     public function getAssocCandidatesUri($base_url, $session_key, $owner_id, $fieldList, $constraint) {
         //https://rest22.bullhornstaffing.com/rest-services/987up/search/Candidate?query=owner.id:10237&fields=firstName,lastName,id,owner&useV2=true
         $uri = new Uri($base_url."search/Candidate");
