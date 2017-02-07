@@ -301,15 +301,15 @@ class BullhornService extends AbstractService
 		return $uri;
 	}
 
-    public function getSearchCandidateUri($base_url, $session_key, $search_field, $query) {
+    public function getSearchQueryCandidateUri($base_url, $session_key, $query) {
         //https://rest32.bullhornstaffing.com/rest-services/274e9s/search/Candidate?query=email:mickey@mousehouse.com.au&fields=id,email,name&sort=-id&count=10&start=0&...
         $uri = new Uri($base_url."search/Candidate");
         $uri->addToQuery("BhRestToken", $session_key);
-        $uri->addToQuery("query", "$search_field:$query");
+        $uri->addToQuery("query", $query);
         $uri->addToQuery("fields", "id");
         $uri->addToQuery("start", 0);
         //$uri->addToQuery("useV2", "true");
-        $uri->addToQuery("count", 500);
+        $uri->addToQuery("count", 50);
         return $uri;
     }
 

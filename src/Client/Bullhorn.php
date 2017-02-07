@@ -244,8 +244,9 @@ class Bullhorn {
 		$client = $this->httpClient;
 
 		$find_uri = $bullhornService->getSearchUri($this->base_url, $this->session_key, $query);
-		//$this->log_debug("Searching for query ".$query."");
-		//$this->var_debug($find_uri);
+		$this->log_debug("Searching for query ".$query."");
+		$this->log_debug($find_uri->getAbsoluteUri());
+
 		$response = $client->retrieveResponse($find_uri, '', [], 'GET');
 
 		$decoded = $this->extract_json($response);
@@ -449,21 +450,34 @@ class Bullhorn {
 	}
 
 	public function findByEmail($email) {
+		return findByField("email", $email);
+	}
+
+	public function findByField($field, $value) {
+		return findByQuery("$field:$value");
+	}
+
+	public function findByQuery($query) {
 		$bullhornService = $this->service;
-		$find_uri = $bullhornService->getSearchCandidateUri($this->base_url, $this->session_key, "email", $email);
+		$find_uri = $bullhornService->getSearchQueryCandidateUri($this->base_url, $this->session_key, $query);
+		$this->log_debug($find_uri->__toString());
 		$client = $this->httpClient;
 		$response = $client->retrieveResponse($find_uri, '', [], 'GET');
 		$decoded_list = $this->extract_json($response);
-		$id = null;
+		$this->var_debug($response);
+		$ids = [];
 		if (array_key_exists("data", $decoded_list)) {
 			$list_of_ids = $decoded_list["data"];
-			if (count($list_of_ids) > 0) {
-				$id = $list_of_ids[0]["id"];
-				$this->log_debug("found id $id for email $email");
+			foreach($list_of_ids as $idHolder) {
+				$id = $idHolder["id"];
+				$ids[] = $id;
+				$this->log_debug("found id $id with query $query");
 			}
 		}
-		return $id;
+		return $ids;
 	}
+
+
 
 	private function lookup_country($country) {
 		if (!$this->base_url) {

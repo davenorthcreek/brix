@@ -485,22 +485,27 @@ class Candidate extends ModelObject
 				}
 			}
 			if (preg_match("/date/i", $attr) && $value) {
-				//need to convert to Unix timestamp
+				$this->log_debug("need to convert to Unix timestamp");
                 $this->log_debug("$attr: ".$value);
-				$date = \DateTime::createFromFormat("d/m/Y", $value);
-                if (!$date) {
-                    //assume we're going the other way
-                    $date = \DateTime::createFromFormat('U', ($value/1000));
-                    if ($date) {
-                        $value = $date->format("d/m/Y");
-                    } else { //no value, no date
-                        $value = '';
-                    }
+                if (is_numeric($value)) {
+                    //leave it
                 } else {
-                    //no, we want the Unix timestamp
-                    $stamp = $date->format('U') * 1000;
-                    $value = $stamp;
+    				$date = \DateTime::createFromFormat("d/m/Y", $value);
+                    if (!$date) {
+                        //assume we're going the other way
+                        $date = \DateTime::createFromFormat('U', ($value/1000));
+                        if ($date) {
+                            $value = $date->format("d/m/Y");
+                        } else { //no value, no date
+                            $value = '';
+                        }
+                    } else {
+                        //no, we want the Unix timestamp
+                        $stamp = $date->format('U') * 1000;
+                        $value = $stamp;
+                    }
                 }
+                $this->log_debug("$attr is now $value");
 			}
 			if (is_a($value, "ModelObject")) {
 				$json[$attr]['id'] = $value->get("id");
@@ -564,8 +569,8 @@ class Candidate extends ModelObject
 		}
 
 
-		$encoded = json_encode($json, true);
-		$this->log_debug($encoded);
+		$encoded = json_encode($json, JSON_PRETTY_PRINT);
+		$this->log_debug("JSON to be sent: $encoded");
 		return $encoded;
 	}
 

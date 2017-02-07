@@ -108,6 +108,11 @@ class BullhornController {
 		$decoded = $bullhornClient->update_candidate($dummy);
 	}
 
+	public function updateCandidate($candidate) {
+		$bullhornClient = $this->getClient();
+		return $bullhornClient->update_candidate($candidate);
+	}
+
 	public function findAssocCandidates(\Stratum\Model\CorporateUser $cuser) {
 		$bullhornClient = $this->getClient();
 
@@ -164,6 +169,18 @@ class BullhornController {
 		return $candidate;
 	}
 
+	public function findByQuery($query) {
+		$bullhornClient = $this->getClient();
+		$candidate_id = $bullhornClient->findByQuery($query);
+		return $candidate_id;
+	}
+
+	public function findByField($field, $value) {
+		$bullhornClient = $this->getClient();
+		$candidate_id = $bullhornClient->findByField($field, $value);
+		return $candidate_id;
+	}
+
 	public function findByEmail($email) {
 		$bullhornClient = $this->getClient();
 		$candidate_id = $bullhornClient->findByEmail($email);
@@ -195,6 +212,15 @@ class BullhornController {
 			//$bullhornClient->submit_specialties($candidate);
 			$bullhornClient->submit_note($candidate);
 		}
+		//returns an array with 'error' or 'id' and other data
+		return $retval;
+	}
+
+	public function deleteCandidate(\Stratum\Model\Candidate $candidate) {
+		$bullhornClient = $this->getClient();
+		$candidate->set("isDeleted", "true");
+		$retval = $bullhornClient->submit_candidate($candidate);
+
 		//returns an array with 'error' or 'id' and other data
 		return $retval;
 	}
