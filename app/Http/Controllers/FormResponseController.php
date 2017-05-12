@@ -83,6 +83,9 @@ class FormResponseController extends Controller
                 }
                 //Brix is using customDate2 for birthdate despite the presence of the dateOfBirth field
                 $candidate->set("customDate2", $candidate->get("dateOfBirth"));
+                //Brix and AGS need smsOptIn to be set to true for all candidates
+                $candidate->set("smsOptIn", "true");
+                
                 $retval = $bc->submit($candidate);
                 if (array_key_exists("errorMessage", $retval)) {
                     $data['errormessage']['message'] = $retval['errorMessage'];
