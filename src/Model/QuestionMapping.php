@@ -401,7 +401,7 @@ class QuestionMapping extends ModelObject
         } else {
             echo("<input class='form-control' name='$label' type='text' value='".$val."'");
             if ($required) {
-                echo 'required="true"';
+                echo ' required="true"';
             }
             echo ">";
         }
