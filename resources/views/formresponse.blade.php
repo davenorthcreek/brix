@@ -47,7 +47,7 @@
                 $section = $sections[$i];
                 $label = $headers[$i];
                 ?>
-                @if ($label == 'Professional Details')
+                @if ($label == 'Personal Details' || 'Professional Details')
                     <div class="box box-{{$box_style}} ">
                         <div class="box-header with-border">
                             <h3 class='box-title'>{{ $label }}</h3>
@@ -55,6 +55,11 @@
                                 <button class="btn btn-box-tool present" data-widget="collapse" data-toggle="tooltip" title="Collapse/Expand"><i class="fa fa-minus"></i></button>
                             </div>
                         </div>
+                        <div class='box-body'>
+                            {{ $formResult->exportSectionToHTML($form, $section, $candidate) }}
+                        </div>
+                        <div class="box-footer"></div><!-- /.box-footer-->
+                    </div><!-- /.box -->
                 @else
                 <div class="box box-{{$box_style}} collapsed-box">
                     <div class="box-header with-border">
@@ -63,12 +68,12 @@
                             <button class="btn btn-box-tool present" data-widget="collapse" data-toggle="tooltip" title="Collapse/Expand"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
-                @endif
                     <div class='box-body' style='display: none;'>
                         {{ $formResult->exportSectionToHTML($form, $section, $candidate) }}
                     </div>
                     <div class="box-footer"></div><!-- /.box-footer-->
                 </div><!-- /.box -->
+                @endif
             @endfor
             <div class="box box-{{$box_style}}">
                 <div class="box-header with-border">
