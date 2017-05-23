@@ -143,8 +143,12 @@ class CandidateReference extends ModelObject
             $this->log_debug($attr." and ".$value);
             $flag = false;
             if (preg_match("/date/", $attr)) {
-                $flag = true;
-                $this->log_debug("preg_match for date succeeded.");
+                if (preg_match("/candidate/", $attr)) {
+                    $flag = false;
+                } else {
+                    $flag = true;
+                    $this->log_debug("preg_match for date succeeded.");
+                }
             }
             if (strpos($attr, "employment")!==false && strpos($attr, "employment")==0) {
                 $flag = true;
