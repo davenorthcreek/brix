@@ -172,7 +172,7 @@ class Candidate extends ModelObject
                            'mobile',
                            'email',
                            'dateOfBirth',
-                           'customTextBlock3'
+                           'occupation'
                           ];
 
 
