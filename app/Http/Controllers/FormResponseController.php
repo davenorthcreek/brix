@@ -85,7 +85,7 @@ class FormResponseController extends Controller
                 $candidate->set("customDate2", $candidate->get("dateOfBirth"));
                 //Brix and AGS need smsOptIn to be set to true for all candidates
                 $candidate->set("smsOptIn", true);
-                
+
                 $retval = $bc->submit($candidate);
                 if (array_key_exists("errorMessage", $retval)) {
                     $data['errormessage']['message'] = $retval['errorMessage'];
@@ -103,8 +103,10 @@ class FormResponseController extends Controller
                             if (strpos($label, 'resume') !== false) {
                                 //file2, the resume
                                 $type = "Resume";
-                            } else {
+                            } else if (strpos($label, 'White') !== false) {
                                 $type = "H&SGCIC(White Card)";
+                            } else {
+                                $type = "Additional";
                             }
                             $bc->submit_file_as_string($candidate, $filename, $filebody, $type);
                         }

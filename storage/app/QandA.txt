@@ -163,6 +163,7 @@ brix00rf0092	Text	customText8	Please provide your drivers license number
 Section Attachments
 brix00rf0093	upload	file1	Please attach your Health & Safety General Construction Induction Card (White Card)
 brix00rf0094	upload	file2	Please attach your resume if you have one
+brix00rf0095    upload  file3   Any Additional File to Upload
 Section Reference 1
 brix00rf0096	multiple	recommender1	Reference 1
 brix00rf0096.A1	Text	referenceName	Reference Name
