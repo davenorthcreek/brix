@@ -141,10 +141,18 @@ class CandidateReference extends ModelObject
 		foreach ($this->expose_bullhorn_set() as $attr=>$value) {
 			//now we filter based on what we have vs. what Bullhorn knows
             $this->log_debug($attr." and ".$value);
-            if ((preg_match("/date/", $attr) || strpos($attr, "employment")==0)
-                && $value) {
+            $flag = false;
+            if (preg_match("/date/", $attr) {
+                $flag = true;
+                $this->log_debug("preg_match for date succeeded.");
+            }
+            if (strpos($attr, "employment")==0) {
+                $flag = true;
+                $this->log_debug("employment strpos succeeded.");
+            }
+            if ($flag && $value) {
+                $this->log_debug("converting to timestamp.")
                 //need to convert to Unix timestamp
-                $this->log_debug("$attr: ".$value);
                 $date = \DateTime::createFromFormat("d/m/Y", $value);
                 if (!$date) {
                     //assume we're going the other way
