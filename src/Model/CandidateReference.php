@@ -140,6 +140,7 @@ class CandidateReference extends ModelObject
 		$json = [];
 		foreach ($this->expose_bullhorn_set() as $attr=>$value) {
 			//now we filter based on what we have vs. what Bullhorn knows
+            $this->log_debug($attr." and ".$value);
             if ((preg_match("/date/", $attr) || strpos($attr, "employment")==0)
                 && $value) {
                 //need to convert to Unix timestamp
