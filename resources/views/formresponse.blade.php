@@ -47,7 +47,7 @@
                 $section = $sections[$i];
                 $label = $headers[$i];
                 ?>
-                @if ($label == 'Personal Details' || 'Professional Details')
+                @if ($label == 'Personal Details' || $label == 'Professional Details')
                     <div class="box box-{{$box_style}} ">
                         <div class="box-header with-border">
                             <h3 class='box-title'>{{ $label }}</h3>
