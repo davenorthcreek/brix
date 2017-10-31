@@ -89,7 +89,7 @@ class FormResponseController extends Controller
                 $retval = $bc->submit($candidate);
                 if (array_key_exists("errorMessage", $retval)) {
                     $data['errormessage']['message'] = $retval['errorMessage'];
-                    $data['errormessage']['errors'] = $retval['errors'];
+                    $data['errormessage']['errors'] = $retval;
                     $data['message'] = "Problem uploading data";
                 } else {
                     $data['message'] = "Data Uploaded";
