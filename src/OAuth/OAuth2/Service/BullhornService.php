@@ -146,7 +146,8 @@ class BullhornService extends AbstractService
             array(
                 'client_id'     => $this->credentials->getConsumerId(),
                 'response_type'	=> 'code',
-                //'redirect_uri'	=> 'http://www.bullhorn.com',
+                'redirect_uri'	=> 'http://www.bullhorn.com',
+                'state'         => 'random_string',
                 'username'		=> $username,
                 'password'      => $password,
                 'action'		=> 'Login'
