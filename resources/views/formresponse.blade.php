@@ -27,8 +27,11 @@
                     </div>
                 </div>
             @endif
-            <form method="post" enctype="multipart/form-data" id="confirmValues" action='{{route("confirmValues", ["source" => $source])}}' >
+            <form method="post" enctype="multipart/form-data" id="confirmValues" action='{{ url("register/$source/$index") }}'>
+            <!--{{route("confirmValues", ["source" => $source])}}' -->
                 <input type='hidden' name='source' value="{{$source}}">
+                <input type='hidden' name='subform' value="{{$index}}">
+                <input type='hidden' name='email' value="{{$email}}">
             <div class="box box-{{$box_style}}">
                 <div class="box-header with-border">
                     <h1 class='box-title' style='font-weight:bold'>{{ $page_title or ""}}</h1>
@@ -47,7 +50,7 @@
                 $section = $sections[$i];
                 $label = $headers[$i];
                 ?>
-                @if ($label == 'Personal Details' || $label == 'Professional Details')
+                @if ($label == 'Basic Information' || $label == 'Professional Details')
                     <div class="box box-{{$box_style}} ">
                         <div class="box-header with-border">
                             <h3 class='box-title'>{{ $label }}</h3>

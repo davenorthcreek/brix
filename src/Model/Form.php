@@ -26,13 +26,13 @@ class Form extends ModelObject
     protected $_fields = [ //put various fields in here
 						  'humanToJson'       =>'',
 						  'jsonToHuman'       =>'',
-						  'questionConfig'    =>"", //map of configs
-						  'questionMappings'  =>"", //by Q#
+						  'questionConfig'    =>[], //map of configs
+						  'questionMappings'  =>[], //by Q#
                           'sections'          =>[],
                           'sectionHeaders'    =>[],
-						  'WAMappings'        =>"", //by WA Answer Name
-						  'BHMappings'        =>"", //by BH Field
-						  'SNMappings'        =>""  //
+						  'WAMappings'        =>[], //by WA Answer Name
+						  'BHMappings'        =>[], //by BH Field
+						  'SNMappings'        =>[]  //
 						  ];
 
 	public function get_question($qId) {
@@ -44,21 +44,15 @@ class Form extends ModelObject
 		}
 	}
 
-	public function parse_mapping() {
-		//load mapping json file
-		//$mapping_string = Storage::disk('local')->get("mapping2.json");
-		//$mapping = json_decode($mapping_string, true);
-		//var_dump($mapping);
-		//$this->set('humanToJson', $mapping);
-		//$inverted = array_flip($mapping);
-		//echo $inverted["Q21741498"];	//returns Q47
-		//$this->set('jsonToHuman', $inverted);
-		//Load Question Config file
+	public function parse_mapping($index) {
+
 		$answers = [];
         $sectionCounter = -1;  //so first section header goes to 0
         $sections = [];
         $sectionHeaders = [];
-		$handle = fopen(base_path()."/storage/app/QandA.txt", "r");
+        $fname = base_path()."/storage/app/QandA".$index.".txt";
+        $this->log_debug("Filename $fname");
+		$handle = fopen($fname, "r");
 		$questionMappings = $this->get("questionMappings");
 		$waMappings = $this->get("WAMappings");
 		$bhMappings = $this->get("BHMappings");
@@ -140,8 +134,8 @@ class Form extends ModelObject
 						    }
     						$answers[] = $currentQ;
                             $sections[$sectionCounter][] = $currentQ;
+                            //$currentQ->dump();
                             $questionMappings[$mapKey] = $currentQ;
-    						//$currentQ->dump();
     						$bullhorn_prefix = "";
     						$wa_prefix = "";
     					}

@@ -1,19 +1,41 @@
 <?php
-
 namespace Stratum\Test\Controller;
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Stratum\Controller\BullhornController;
 use \Monolog\Logger;
 use \Monolog\Handler\StreamHandler;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Foundation\Testing\TestCase;
 
 
-class BullhornControllerTest extends \PHPUnit_Framework_TestCase {
+class BullhornControllerTest extends TestCase {
 
 	protected static $controller;
 
 	protected $candidate;
 	protected $log;
+
+    /**
+     * The base URL to use while testing the application.
+     *
+     * @var string
+     */
+    protected $baseUrl = 'http://localhost';
+
+    /**
+     * Creates the application.
+     *
+     * @return \Illuminate\Foundation\Application
+     */
+    public function createApplication()
+    {
+        $app = require __DIR__.'/../../bootstrap/app.php';
+
+        $app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+
+        return $app;
+    }
 
 	private function getController() {
 		if (!self::$controller) {
@@ -28,6 +50,7 @@ class BullhornControllerTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	protected function setUp() {
+        parent::setUp();
 		$this->log = new Logger('Brix');
 		$this->log->pushHandler(new StreamHandler('src/log/'.date('Y-m-d').'.log', Logger::DEBUG));
 		$this->candidate = new \Stratum\Model\Candidate();

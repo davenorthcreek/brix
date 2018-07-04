@@ -52,29 +52,9 @@ class FormController {
 
 	protected $jsonDecoded;
 
-	public function parse($entityBody) {
-		if (substr_compare($entityBody, 'data=%7B', 0)) {
-			$entityDecoded = urldecode($entityBody);
-		} else {
-			$entityDecoded = $entityBody; //already decoded
-		}
-		//string starts with "data="
-		$entity2 = substr($entityDecoded, 5);
-		$this->jsonDecoded = json_decode($entity2, true);
-		$this->setupForm();
-		$formResult = new \Stratum\Model\FormResult();
-		$formResult->init($this->jsonDecoded, $this->form);
-		$questions = $this->mapQuestions($this->jsonDecoded, $this->form);
-		$formResult->set("questions", $questions);
-		//$formResult->dump();
-		$responses = Storage::disk('local')->put($formResult->get("respondentId")."_decoded.json",
-			json_encode($formResult->get("response"), JSON_PRETTY_PRINT));
-		return $formResult;
-	}
-
-	public function setupForm() {
+	public function setupForm($index) {
 		$this->form = new \Stratum\Model\Form();
-		$this->form->parse_mapping();
+		$this->form->parse_mapping($index);
 		return $this->form;
 	}
 

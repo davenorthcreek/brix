@@ -17,9 +17,9 @@ use Auth;
 
 class CorporateUserController extends Controller
 {
-  public function index() {
+  public function index(Request $request) {
       $frc = new FormResponseController();
-      return $frc->index(0);
+      return $frc->index($request, 0);
   }
 
 

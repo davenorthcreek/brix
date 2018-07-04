@@ -343,6 +343,8 @@ class CandidateController
                 $previous = $candidate->get($key);
 
                 $qmaps = $formResult->findByBullhorn($key);
+                $this->log_debug("$key: previous $previous");
+                $this->var_debug($qmaps);
                 //$qmaps is a Human Readable (WAAN) label and
                 //an array of answers (from WorldApp result)
 
@@ -360,7 +362,7 @@ class CandidateController
                     foreach ($splitvals as $v) {
                         $splithash[$v] = 1;
                     }
-                } else {
+                } else if ($qmaps) {
                     foreach($qmaps as $frwaan=>$frvals) {
                         if (is_array($frvals)) {
                             foreach (array_keys($frvals) as $frlabel) {

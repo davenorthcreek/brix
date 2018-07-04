@@ -13,7 +13,7 @@
 
 namespace Stratum\Controller;
 
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class BullhornController {
 
@@ -46,7 +46,7 @@ class BullhornController {
 			$result .= ': '.$str;
 			$this->_logger->debug($result);
 		} else {  //no logger configured
-			\Log::debug( $str);
+			Log::debug( $str);
 		}
 	}
 

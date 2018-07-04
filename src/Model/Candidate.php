@@ -14,7 +14,6 @@
 namespace Stratum\Model;
 class Candidate extends ModelObject
 {
-    const XML_PATH_LIST_DEFAULT_SORT_BY     = 'catalog/frontend/default_sort_by';
 
     /**
      * Array of attributes codes needed for product load
