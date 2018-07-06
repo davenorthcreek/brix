@@ -80,9 +80,9 @@
 
 @section('local_scripts')
 <!-- bootstrap datepicker -->
-<script src={{ asset("/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js") }}></script>
+<script src={{ asset("/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js") }}></script>
 <!-- Select2 -->
-<script src={{ asset("/bower_components/AdminLTE/plugins/select2/select2.full.min.js") }}></script>
+<script src={{ asset("/bower_components/select2/dist/js/select2.full.min.js") }}></script>
 <script type="text/javascript">
     $(function () {
       // Replace the <textarea id="editor1"> with a CKEditor
