@@ -22,6 +22,12 @@
                     <h3 class="box-title">{{ $message }}</h3>
                 </div>
                 <div class="box-body">
+                    <h3>
+                        Thank you for registering with {{$fullSource}}.<br>
+                        Please ensure you email us a copy of your Passport and a copy of your White Card to
+                        <a href="mailto:{{$adminEmail}}">{{$adminEmail}}</a>.<br>
+                        You can download a timesheet via our website <a href="{{$homepage}}">{{$homepage}}</a>.
+                    </h3>
                     <?php $thecandidate->exportSummaryToHTML($form, $box_style) ?>
                 </div><!-- /.box-body -->
                 <div class="box-footer">

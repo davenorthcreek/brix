@@ -50,37 +50,22 @@
                 $section = $sections[$i];
                 $label = $headers[$i];
                 ?>
-                @if ($label == 'Basic Information' || $label == 'Professional Details')
-                    <div class="box box-{{$box_style}} ">
-                        <div class="box-header with-border">
-                            <h3 class='box-title'>{{ $label }}</h3>
-                            <div class="box-tools pull-right">
-                                <button class="btn btn-box-tool present" data-widget="collapse" data-toggle="tooltip" title="Collapse/Expand"><i class="fa fa-minus"></i></button>
-                            </div>
-                        </div>
-                        <div class='box-body'>
-                            {{ $formResult->exportSectionToHTML($form, $section, $candidate) }}
-                        </div>
-                        <div class="box-footer"></div><!-- /.box-footer-->
-                    </div><!-- /.box -->
-                @else
-                <div class="box box-{{$box_style}} collapsed-box">
+                <div class="box box-{{$box_style}} ">
                     <div class="box-header with-border">
                         <h3 class='box-title'>{{ $label }}</h3>
                         <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool present" data-widget="collapse" data-toggle="tooltip" title="Collapse/Expand"><i class="fa fa-plus"></i></button>
+                            <button class="btn btn-box-tool present" data-widget="collapse" data-toggle="tooltip" title="Collapse/Expand"><i class="fa fa-minus"></i></button>
                         </div>
                     </div>
-                    <div class='box-body' style='display: none;'>
-                        {{ $formResult->exportSectionToHTML($form, $section, $candidate) }}
+                    <div class='box-body'>
+                        {{ $formResult->exportSectionToHTML($form, $section, $candidate, $exceptions) }}
                     </div>
                     <div class="box-footer"></div><!-- /.box-footer-->
                 </div><!-- /.box -->
-                @endif
             @endfor
             <div class="box box-{{$box_style}}">
                 <div class="box-header with-border">
-                    <button type="submit" class="btn btn-info" id="confirmV">Submit Values to {{$source}}</button>
+                    <button type="submit" class="btn btn-info" id="confirmV">{{$next}}</button>
                     <button role="button" class="btn btn-mini btn-{{$box_style}} pull-right btn-click-action masterbutton"
                         data-widget="collapseAll" data-toggle="tooltip" title="Collapse/Expand All">
                         <i class='fa fa-plus'></i>
@@ -143,7 +128,37 @@
          format: 'dd/mm/yyyy'
     });
 
+    var dt = new Date();
+    dt.setFullYear(new Date().getFullYear()-18);
+    console.log(dt);
+    //DateofBirth picker
+    $('.mydateofbirthpicker').datepicker({
+         language: "en-UK",
+         autoclose: true,
+         format: 'dd/mm/yyyy',
+         changeMonth: true,
+         changeYear: true,
+         yearRange: '-110:-18',
+         showButtonPanel: true,
+         endDate : dt
+     });
 
+
+     $("input:radio[name='none*Preferred payment method[]']").change(function() {
+         var rad = this.value;
+         if (rad == 'TFN') {
+             $('#brix00rf0024').prop("disabled", false );
+             $('#brix00rf0024_label').css('display', "block");
+             $('#brix00rf0025').prop("disabled", true );
+             $('#brix00rf0025_label').css('display', "none");
+         }
+         if (rad == 'ABN') {
+             $('#brix00rf0024').prop("disabled", true);
+             $('#brix00rf0024_label').css('display', "none");
+             $('#brix00rf0025').prop("disabled", false);
+             $('#brix00rf0025_label').css('display', "block");
+         }
+     });
 
 </script>
 @endsection

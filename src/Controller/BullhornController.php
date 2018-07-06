@@ -204,12 +204,12 @@ class BullhornController {
 		$this->log_debug($decoded);
 	}
 
-	public function submit(\Stratum\Model\Candidate $candidate) {
+	public function submit(\Stratum\Model\Candidate $candidate, $complete=true) {
 		$bullhornClient = $this->getClient();
 
 		$retval = $bullhornClient->submit_candidate($candidate);
 
-		if (array_key_exists("changedEntityId", $retval)) {
+		if ($complete && array_key_exists("changedEntityId", $retval)) {
 			//we have a successful submission
 			$this->submit_references($candidate);
 			//$this->submit_custom_object($candidate);

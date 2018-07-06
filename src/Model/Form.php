@@ -45,7 +45,9 @@ class Form extends ModelObject
 	}
 
 	public function parse_mapping($index) {
-
+        if ($index > env('SUBFORMS')) {
+            $index = '';
+        }
 		$answers = [];
         $sectionCounter = -1;  //so first section header goes to 0
         $sections = [];
@@ -108,7 +110,7 @@ class Form extends ModelObject
 					$currentQ->add_answer($q);
 				} else if (preg_match("/brix.*/", $first)) {
 					//normal full line
-                    if (!in_array($second, ['Text', 'Date', 'choice', 'multichoice', 'upload', 'multiple'])) {
+                    if (!in_array($second, ['Text', 'Date', 'choice', 'multichoice', 'upload', 'multiple', 'List', 'radio'])) {
                         $q = new QuestionMapping();
     					$q->set("form", $this);
     					$q->set("QAId", $elements[0]);
@@ -144,7 +146,7 @@ class Form extends ModelObject
     					$mapKey = $first;
     					$currentQ->set("form", $this);
     					$currentQ->set("QId", $first);
-    					if ($elements[1] == "choice" || $elements[1] == "multichoice") {
+    					if (in_array($elements[1], ["choice", "multichoice", "radio"])) {
     						//choose one of the following options, like boolean [OR]
                             //choose one or more of the following options
     						$currentQ->set("BullhornField", $elements[2]);
@@ -163,6 +165,17 @@ class Form extends ModelObject
     							$wa_prefix = $this->collectMultiWordString($elements, 3)." ";
     						}
     						//normal multiple-answer question
+                        } else if ($elements[1] == 'List') {
+                            //select from a list instead of individual answers
+    						$this->log_debug("Looking up answer for ".$first." in file ".$elements[2]);
+                            $currentQ->set("type", "list");
+                            $list_file = $elements[2];
+    						$currentQ->set("configFile", $list_file);
+    						$currentQ->set("BullhornField", $elements[3]);
+    						$waName =  $this->collectMultiWordString($elements, 4);
+    						$currentQ->set("WorldAppAnswerName", $waName);
+    						$bhMappings[$elements[3]][] = $currentQ;
+    						$waMappings[$waName][] = $currentQ;
                         } else {
     						//this is a normal field assigned to a top-level question ID
     						$currentQ->set("type", $elements[1]);
@@ -172,9 +185,20 @@ class Form extends ModelObject
     						$currentQ->set("WorldAppAnswerName", $waName);
     						$waMappings[$waName][] = $currentQ;
     						$bhMappings[$elements[2]][] = $currentQ;
+                            if ($elements[1] == 'upload') {
+                                $currentQ->dump();
+                            }
     					}
                     }
 				}
+                if ($currentQ && !$currentQ->get("required")) { //skip this if we know it's required
+                    $waName = $currentQ->get("WorldAppAnswerName");
+                    $currentQ->set("required", $this->check_required($waName));
+                    if ($currentQ->get("required")) {
+                        $waName = trim(substr($waName, 0, strlen($waName) - 8));
+                        $currentQ->set("WorldAppAnswerName", $waName);
+                    }
+                }
 			}
 			$answers[] = $currentQ;
             $sections[$sectionCounter][] = $currentQ;
@@ -198,6 +222,16 @@ class Form extends ModelObject
         //$this->output_sections();
 		return $this;
 	}
+
+    private function check_required($waName) {
+        $length = strlen($waName);
+        //if $waName ends with required, return true.
+        $pos = $length - 8; //required has 8 characters
+        if (strrpos($waName, 'required') == $pos) {
+            return true;
+        }
+        return false;
+    }
 
     private function output_sections() {
         $sections = $this->get("sections");

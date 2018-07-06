@@ -20,34 +20,51 @@ use Cache;
 class FormResponseController extends Controller
 {
     public function index(Request $request, $source, $subform=1) {
+        $data = [];
         //load candidate from cache if we've had this candidate before
         $candidate = Cache::get($request->input("email"));
         if ($candidate) {
             $data['candidate'] = $candidate;
         }
-        if ($subform >= env("SUBFORMS")) {
-            return $this->confirmValues($request, $data, $source); //finished process
-        }
-        if ($subform == 1) {
-            $data = $this->setupFormControllers([], $source, $subform);
+        //set up exceptions for complex html
+        $data['exceptions'] = $this->setExceptions($candidate);
+        if ($subform == 1) { //start of process
+            $data = $this->setupFormControllers($data, $source, $subform);
             $data['candidate'] = new \Stratum\Model\Candidate();
             $data['email'] = '';
             $data = $this->setupColours($source, $data);
             return view('formresponse')->with($data);
         }
-        if ($subform < env("SUBFORMS")) {
+        if ($subform > env("SUBFORMS")) { //finished process
+            return $this->confirmValues($request, $data, $source);
+        }
+        if ($subform <= env("SUBFORMS")) { //middle of process
             $data = $this->acceptFormValues($request, $data);
+            $candidate = $data['candidate'];
+            $data = $this->checkMissingValues($candidate, $data);
+            if ($request->input("dateOfBirth*Birthdate")) { //form code for birthdate
+                $data = $this->checkBirthDate($candidate, $data);
+            }
+            if (!array_key_exists('errormessage', $data)) {
+                $this->submitCandidateToBullhorn($candidate, false);
+            } else {
+                $subform--;
+            }
             $data = $this->setupFormControllers($data, $source, $subform);
-            $email = $data['candidate']->get("email");
+            $email = $candidate->get("email");
             $data['email'] = $email;
-            Cache::put($email, $data['candidate'], 60);
+            Cache::put($email, $candidate, 60);
             $data = $this->setupColours($source, $data);
+            //submit what we have so far
+            Log::debug($data['exceptions']);
+
             return view('formresponse')->with($data);
         }
     }
 
     private function setupFormControllers($data, $source, $subform) {
         $controller = new \Stratum\Controller\FormController();
+        $subform = min(env('SUBFORMS'), $subform);
         $form = $controller->setupForm($subform);
         $formResult = new \Stratum\Model\FormResult();
         $formResult->set("form", $form);
@@ -56,17 +73,22 @@ class FormResponseController extends Controller
         $data['formResult'] = $formResult;
         $data['page_title'] = "Register with $source";
         $data['index'] = ++$subform;
+        if ($subform > env('SUBFORMS')) {
+            $data['next'] = 'Submit Values to '.$source;
+        } else {
+            $data['next'] = 'NEXT';
+        }
         return $data;
     }
 
     private function acceptFormValues(Request $request, $data) {
         $source = $request->input("source");
-        Log::debug("Source is $source");
         $index = $request->input("subform");
-
+        Log::debug("Source is $source, Index is $index");
+        //$index = min(env('SUBFORMS'), $index);
         $fc = new \Stratum\Controller\FormController();
         $cc = new \Stratum\Controller\CandidateController();
-        $form = $fc->setupForm($index);
+        $form = $fc->setupForm($index-1); // we want qmaps from current questions
         $formResult = new \Stratum\Model\FormResult();
         $formResult->set("form", $form);
 
@@ -99,7 +121,7 @@ class FormResponseController extends Controller
     private function checkBirthDate($candidate, $data) {
         $dateError = $candidate->errorInBirthDate();
         if ($dateError) {
-            $data['errormessage']['message'] = "Properly Formatted Birth Date Required";
+            $data['errormessage']['message'] = "Properly Formatted, Legal Birth Date Required";
             $data['errormessage']['errors'][0]['propertyName'] = "dateOfBirth";
             $data['errormessage']['errors'][0]['severity'] = 'Required Value';
             $data['errormessage']['errors'][0]['type'] = "Improperly Formatted Value: $dateError";
@@ -108,7 +130,7 @@ class FormResponseController extends Controller
         return $data;
     }
 
-    private function submitCandidateToBullhorn($candidate) {
+    private function submitCandidateToBullhorn($candidate, $complete) {
         $bc = new \Stratum\Controller\BullhornController();
         $email = $candidate->get("email");
         $prev_id = $bc->findByEmail($email);
@@ -128,20 +150,20 @@ class FormResponseController extends Controller
         //update - this is causing a problem because of Bullhorn permissions
         //$candidate->set("smsOptIn", true);
 
-        //$retval = $bc->submit($candidate);
-        Log::debug("This is where we would be submitting to Bullhorn\n.\n.\n...");
-        $retval =[];
+        $retval = $bc->submit($candidate, $complete);
+
         return $retval;
     }
 
     public function confirmValues(Request $request, $data, $source) {
+        $bc = new \Stratum\Controller\BullhornController();
         $data = $this->acceptFormValues($request, $data);
         $candidate = $data['candidate'];
         $data = $this->checkMissingValues($candidate, $data);
         $data = $this->checkBirthDate($candidate, $data);
         if (!array_key_exists('errormessage', $data)) {
             //no error so far
-            $retval = $this->submitCandidateToBullhorn($candidate);
+            $retval = $this->submitCandidateToBullhorn($candidate, true);
             if (array_key_exists("errorMessage", $retval)) {
                 $data['errormessage']['message'] = $retval['errorMessage'];
                 $data['errormessage']['errors'] = $retval;
@@ -161,8 +183,12 @@ class FormResponseController extends Controller
                         if (strpos($label, 'resume') !== false) {
                             //file2, the resume
                             $type = "Resume";
-                        } else if (strpos($label, 'White') !== false) {
-                            $type = "H&SGCIC(White Card)";
+                        } else if (strpos($label, 'Ticket') !== false) {
+                            $type = "Ticket";
+                        } else if (strpos($label, 'Passport') !== false) {
+                            $type = "Passport";
+                        } else if (strpos($label, 'Driver') !== false) {
+                            $type = "License";
                         } else {
                             $type = "Additional";
                         }
@@ -172,9 +198,18 @@ class FormResponseController extends Controller
             }
         }
         $fc = new \Stratum\Controller\FormController();
-        $data['form'] = $fc->setupForm(env('SUBFORMS'));
+        $data['form'] = $fc->setupForm(env('SUBFORMS') + 1);
         $data = $this->setupColours($source, $data);
         $data['thecandidate'] = $candidate;
+        if ($source == 'Brix') {
+            $data['fullSource'] = 'Brix Projects';
+            $data['adminEmail'] = 'admin@brixprojects.com.au';
+            $data['homepage']   = 'https://www.brixprojects.com.au';
+        } else {
+            $data['fullSource'] = 'Advanced Group Services';
+            $data['adminEmail'] = 'admin@advancedgroupservices.com.au';
+            $data['homepage']   = 'https://www.advancedgroupservices.com.au';
+        }
         return view('candidate')->with($data);
     }
 
@@ -193,5 +228,20 @@ class FormResponseController extends Controller
         $data['home'] = $home;
         $data['source'] = $source;
         return $data;
+    }
+
+    private function setExceptions($candidate) {
+
+        if ($candidate && $candidate->get("customText14") == 'Australia') {
+            $exc['brix00rf0014'] = '';
+        } else {
+            $exc['brix00rf0014'] = <<<EOT
+<div class="form-group">
+<label for="customText17*Passport Number[]">Passport Number</label>
+<input class="form-control" name="customText17*Passport Number[]" value="" type="text">
+</div>
+EOT;
+        }
+        return $exc;
     }
 }

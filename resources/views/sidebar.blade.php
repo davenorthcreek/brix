@@ -16,7 +16,7 @@
     <ul class="sidebar-menu">
       <li class="header">MENU</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="{{url("/register/$source")}}"><i class="fa fa-home"></i> <span>Reset Form</span></a></li>
+      <li class="active"><a href="{{url("/register/$source/1")}}"><i class="fa fa-home"></i> <span>Reset Form</span></a></li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>

@@ -282,7 +282,7 @@ class FormResult extends ModelObject
 		return $this;
 	}
 
-    public function exportSectionToHTML($form, $section, $candidate) {
+    public function exportSectionToHTML($form, $section, $candidate, $exceptions = []) {
         $sectionQs=null;
         $questionMaps = $form->get('questionMappings');
         foreach ($section as $qmap) {
@@ -299,17 +299,17 @@ class FormResult extends ModelObject
                     $this->log_debug("using $theId ".$qmap->get("WorldAppAnswerName"));
                     $sectionQs[$theId] = $qmap;
                 }
-            } else if ($mult && ($type!='choice') && ($type != "list") && ($type != "multichoice")) {
-                $this->log_debug("Mult and not choice, multichoice, boolean, or list");
+            } else if ($mult && !in_array($type, ['choice', 'List', 'multichoice', 'radio'])) {
+                $this->log_debug("Mult and not choice, multichoice, boolean, radio or list");
                 foreach ($qmap->get("answerMappings") as $q2) {
                     $theId = $q2->getBestId();
                     $sectionQs[$theId] = $q2;
-                    $this->log_debug("Setting answer $theId ".$q2->get("value"));
+                    $this->log_debug("Setting answer $theId ".$q2->get("Value"));
                 }
             } else {
                 $theId = $qmap->getBestId();
                 $sectionQs[$theId] = $qmap;
-                $this->log_debug("default case");
+                $this->log_debug("default case for $theId: ".$qmap->get("Value"));
             }
         }
         //store list of 'select all' checkboxes for javascript
@@ -320,7 +320,7 @@ class FormResult extends ModelObject
                 /****************************************
                 second pass, export to html with answers
                 ************************************** */
-            $retval = $qmap->exportQMToHTML($human, $this->get("configs"), $candidate, $this);
+            $retval = $qmap->exportQMToHTML($human, $this->get("configs"), $candidate, $this, $exceptions);
             if ($retval) {
                 $checkboxes[] = $retval;
             }

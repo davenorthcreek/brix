@@ -12,6 +12,9 @@
  */
 
 namespace Stratum\Model;
+
+use Carbon\Carbon;
+
 class Candidate extends ModelObject
 {
 
@@ -169,9 +172,10 @@ class Candidate extends ModelObject
                            'lastName',
                            'name',
                            'mobile',
-                           'email',
-                           'dateOfBirth',
-                           'occupation'
+                           //'email',
+                           //'dateOfBirth',
+                           //'customTextBlock3',
+                           //'occupation',
                           ];
 
 
@@ -575,6 +579,11 @@ class Candidate extends ModelObject
 	}
 
     public function isRequired($attr) {
+        $is_address = preg_match("/^address\((.*)\)/", $attr, $matches);
+        if ($is_address) {
+            $address = new Address();
+            return $address->isRequired($matches[1]);
+        }
         return (in_array($attr, $this->required));
     }
 
@@ -603,6 +612,12 @@ class Candidate extends ModelObject
         }
         if ($errors['warning_count'] > 0) {
             return implode(". ", $errors['warnings']);
+        }
+        $cd = Carbon::createFromFormat($format, $this->get("dateOfBirth"));
+        $now = new Carbon();
+        $eighteenYearsAgo = $now->subYears(18);
+        if ($cd->gt($eighteenYearsAgo)) {
+            return 'Date of Birth must be at least 18 years in the past.';
         }
         return null;
     }
@@ -651,7 +666,7 @@ class Candidate extends ModelObject
         echo "\n<th><label>Value</label></th>\n";
         echo "\n</tr></thead>";
         echo "\n<tbody>";
-        $summary = ["firstName", "lastName", "email", "mobile", "phone", "dateOfBirth", "customTextBlock3", "customText18", "customText19", "skillSet", "certifications"];
+        $summary = ["firstName", "lastName", "email", "mobile", "dateOfBirth", "customTextBlock3", "customText18", "customText11", "skillSet", "certifications"];
         foreach ($summary as $item) {
             $value = '';
             if ($item == "dateOfBirth") {

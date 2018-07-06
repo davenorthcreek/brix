@@ -22,7 +22,11 @@ class Address extends ModelObject
 						  'countryID'=>'',
 						  'countryName'=>''
 						  ];
-
+    protected $required = ['address1',
+                           'city',
+                           'state',
+                           'zip',
+                        ];
 
 	public function populateFromData($data) {
 		foreach ($data as $key=>$value) {
@@ -30,6 +34,10 @@ class Address extends ModelObject
 		}
 		return $this;
 	}
+
+    public function isRequired($attr) {
+        return (in_array($attr, $this->required));
+    }
 
 
 	public function dump() {
