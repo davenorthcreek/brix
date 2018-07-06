@@ -13,7 +13,7 @@
       </div>
     </div>
     <!-- Sidebar Menu -->
-    <ul class="sidebar-menu">
+    <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MENU</li>
       <!-- Optionally, you can add icons to the links -->
       <li class="active"><a href="{{url("/register/$source/1")}}"><i class="fa fa-home"></i> <span>Reset Form</span></a></li>
