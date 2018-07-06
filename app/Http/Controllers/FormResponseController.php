@@ -19,6 +19,10 @@ use Cache;
 
 class FormResponseController extends Controller
 {
+    public function kickoff(Request $request) {
+        return $this->index($request, env('SOURCE'), 1);
+    }
+
     public function index(Request $request, $source, $subform=1) {
         $data = [];
         //load candidate from cache if we've had this candidate before

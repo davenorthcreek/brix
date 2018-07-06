@@ -27,7 +27,8 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/admin', 'CorporateUserController@index');
   Route::get('/home', 'CorporateUserController@index');
   Route::get('/refresh', 'CorporateUserController@refresh');
-  Route::get('/', 'CorporateUserController@index');
+  Route::get('/', 'FormResponseController@kickoff');
+  Route::get('/register', 'FormResponseController@kickoff');
   Route::post('/register/{source}/{subform}', 'FormResponseController@index');
   Route::get('/register/{source}/{subform}', 'FormResponseController@index');
   Route::post('/formresponse/confirm', ['uses'=>'FormResponseController@confirmValues', 'as'=>'confirmValues']);
