@@ -1,0 +1,55 @@
+Section Basic Information
+brix00rf0002	Text	firstName	First Name required
+brix00rf0003	Text	lastName	Last Name required
+brix00rf0004	Text	address(address1)	Street Address required
+brix00rf0005	Text	address(city)	Suburb required
+brix00rf0006	Text	address(state)	State required
+brix00rf0007	Text	address(zip)	Post Code required
+brix00rf0009	Text	mobile	Mobile Phone required
+brix00rf0010	Text	email	Email required
+brix00rf0030	Text	customTextBlock3	Occupation required
+brix00rf0032	choice	occupation	Primary Position required
+brix00rf0032.A1	Aluminium/Glazer
+brix00rf0032.A2	Asbestos Removalist
+brix00rf0032.A3	Boilermaker/Welder
+brix00rf0032.A4	Brick/Block Layer
+brix00rf0032.A5	Carpenter
+brix00rf0032.A6	Civil Engineer
+brix00rf0032.A7	Civil Labourer
+brix00rf0032.A8	Concrete Patcher
+brix00rf0032.A9	Concrete Pump Operator
+brix00rf0032.A10	Concreter
+brix00rf0032.A11	Confined Space Labourer
+brix00rf0032.A12	Crane Operator
+brix00rf0032.A13	Demolition Labourer
+brix00rf0032.A14	Diesel Mechanic
+brix00rf0032.A15	Dogman
+brix00rf0032.A16	Electrical Trade Assistant
+brix00rf0032.A17	Electrician
+brix00rf0032.A18	Excavator Operator
+brix00rf0032.A19	Forklift Operator
+brix00rf0032.A20	Formworker
+brix00rf0032.A21	General Labourer
+brix00rf0032.A22	Gyprocker
+brix00rf0032.A23	HC/HM Operator
+brix00rf0032.A24	Hoist Operator
+brix00rf0032.A25	HR/MR Operator
+brix00rf0032.A26	Mechanical Fitter
+brix00rf0032.A27	Metal Fabricator
+brix00rf0032.A28	NBN Worker
+brix00rf0032.A29	Pipelayer
+brix00rf0032.A30	Plasterer
+brix00rf0032.A31	Plumber
+brix00rf0032.A32	Renderer
+brix00rf0032.A33	Rigger
+brix00rf0032.A34	RISI Labourer
+brix00rf0032.A35	RIW Labourer
+brix00rf0032.A36	Scaffolder
+brix00rf0032.A37	Labourer
+brix00rf0032.A38	Steelfixer
+brix00rf0032.A39	Sheet Metal Worker
+brix00rf0032.A40	Ticketed Labourer
+brix00rf0032.A41	Tiler
+brix00rf0032.A42	Trade Assistant
+brix00rf0032.A43	Traffic Controller
+brix00rf0032.A44	Other

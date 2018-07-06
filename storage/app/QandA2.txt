@@ -1,0 +1,89 @@
+Section Detailed Information
+brix00rf0011	Date	dateOfBirth	Birthdate required
+brix00rf0012	choice	NULL	Visa Status required
+brix00rf0012.A1	No
+brix00rf0012.A2	Yes
+brix00rf0013    List	nationality.csv	customText14   What is your nationality? required
+brix00rf0015	choice	source	How did you hear about us? required
+brix00rf0015.A1	Internet Search
+brix00rf0015.A2	Website
+brix00rf0015.A3	SEEK.com.au
+brix00rf0015.A4	Gumtree
+brix00rf0015.A5	Facebook
+brix00rf0015.A6	Advert in Hostel
+brix00rf0015.A7	Mining Links
+brix00rf0015.A8	Friend
+brix00rf0015.A9	Other
+Section Emergency Contact
+brix00rf0016	Text	customText4   Emergency Contact Name required
+brix00rf0017	Text	customText13  Emergency Contact Number required
+Section Personal History
+brix00rf0018	choice	Note	Have you ever failed a medical exam? required
+brix00rf0018.A1	Yes
+brix00rf0018.A2	No
+brix00rf0019	choice	Note	Have you ever failed a drug test? required
+brix00rf0019.A1	Yes
+brix00rf0019.A2	No
+brix00rf0034	multichoice	customTextBlock2	Current Tickets and Licenses
+brix00rf0034.A1	Acciona Inducted
+brix00rf0034.A2	Asbestos ID + Awareness
+brix00rf0034.A3	Asbestos – Class A
+brix00rf0034.A4	Asbestos – Class B
+brix00rf0034.A5	Ausgrid Passport
+brix00rf0034.A6	Backhoe/Loader
+brix00rf0034.A7	Bobcat
+brix00rf0034.A8	Boom Lift
+brix00rf0034.A9	Builders Licence
+brix00rf0034.A10	Confined Space
+brix00rf0034.A11	Slewing Mobile Crane (60 Tonnes)
+brix00rf0034.A12	Non Slewing Mobile Crane (Above 3 Tons)
+brix00rf0034.A13	CV Crane
+brix00rf0034.A14	Tower Crane
+brix00rf0034.A15	Truck Mount Crane
+brix00rf0034.A16	Pendant Crane
+brix00rf0034.A17	Demolition License
+brix00rf0034.A18	Dogging (DG)
+brix00rf0034.A19	Dogging – Carry Out Load Slinging
+brix00rf0034.A20	Dozer
+brix00rf0034.A21	Dump Truck
+brix00rf0034.A22	Electrical License
+brix00rf0034.A23	Energy Endeavour Passport
+brix00rf0034.A24	EWP
+brix00rf0034.A25	Excavator
+brix00rf0034.A26	First Aid – Basic
+brix00rf0034.A27	First Aid – Senior
+brix00rf0034.A28	First Aid – CPR
+brix00rf0034.A29	Forklift (LF)
+brix00rf0034.A30	Front End Loader
+brix00rf0034.A31	Grader
+brix00rf0034.A32	Hoist – Materials Hoist
+brix00rf0034.A33	Hoist – Personnel & Materials Hoist
+brix00rf0034.A34	HR
+brix00rf0034.A35	MR
+brix00rf0034.A36	NBN Induction
+brix00rf0034.A37	North Connex Inducted
+brix00rf0034.A38	North West Rail-Link Inducted
+brix00rf0034.A39	Rail Industry Worker (Pegasus)
+brix00rf0034.A40	Restricted Demolition License
+brix00rf0034.A41	Rigging – Basic (RB)
+brix00rf0034.A42	Rigging – Intermediate Rigging (RI)
+brix00rf0034.A43	Rigging – Advanced Rigging (RA)
+brix00rf0034.A44	RISI
+brix00rf0034.A45	Roller
+brix00rf0034.A46	Scaffolding Basic (SB)
+brix00rf0034.A47	Intermediate Scaffolding
+brix00rf0034.A48	Advanced Scaffolding
+brix00rf0034.A49	Skid steer
+brix00rf0034.A50	Spotter
+brix00rf0034.A51	Spotter Ticket
+brix00rf0034.A52	Telescopic Materials Handler
+brix00rf0034.A53	Traffic Management
+brix00rf0034.A54	H&S General Construction (White Card)
+brix00rf0034.A55	West Connex Inducted
+brix00rf0034.A56	Working Safely at Heights
+brix00rf0034.A57	Yellow Card – Scissor Lift
+brix00rf0034.A58	Yellow Card – Under 11 Meters
+brix00rf0034.A59	Other
+brix00rf0091	choice	customText16	Do you have your own transportation? required
+brix00rf0091.A1	No
+brix00rf0091.A2	Yes

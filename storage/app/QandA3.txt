@@ -1,0 +1,34 @@
+Section Additional Information
+brix00rf0014	Text	customText17	Passport Number
+brix00rf0200    radio   none    Preferred payment method required
+brix00rf0200.A1 TFN
+brix00rf0200.A2 ABN
+brix00rf0024	Text	customText18	TFN
+brix00rf0025	Text	customText11	ABN
+Section Bank Information
+brix00rf0022	Text	customText3	BSB
+brix00rf0023	Text	customText5	Account Number
+
+Section Attachments
+brix00rf0094	upload	file2	Please attach your resume if you have one
+brix00rf0191    upload  file4   Optional Ticket 1
+brix00rf0192    upload  file5   Optional Ticket 2
+brix00rf0193    upload  file6   Optional Ticket 3
+brix00rf0194    upload  file7   Optional Ticket 4
+brix00rf0195    upload  file8   Optional Ticket 5
+brix00rf0293	upload	file1	Passport Scan
+brix00rf0095    upload  file3   Driver's License
+Section Reference 1
+brix00rf0096	multiple	recommender1	Reference 1
+brix00rf0096.A1	Text	referenceName	Reference Name
+brix00rf0096.A2	Text	referenceTitle	Reference Position
+brix00rf0096.A3	Text	referencePhone	Phone No:
+brix00rf0096.A4	Text	companyName Company
+brix00rf0096.A5	Text	candidateTitle	Your Position Held
+Section Reference2
+brix00rf0103	multiple	recommender2	Reference 2
+brix00rf0103.A1	Text	referenceName	Reference Name
+brix00rf0103.A2	Text	referenceTitle	Reference Position
+brix00rf0103.A3	Text	referencePhone	Phone No:
+brix00rf0103.A4	Text	companyName	Company
+brix00rf0103.A5	Text	candidateTitle	Your Position Held
