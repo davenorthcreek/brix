@@ -23,6 +23,10 @@ class FormResponseController extends Controller
         return $this->index($request, env('SOURCE'), 1);
     }
 
+    public function legacy(Request $request, $source) {
+        return $this->index($request, $source, 1);
+    }
+
     public function index(Request $request, $source, $subform=1) {
         $data = [];
         //load candidate from cache if we've had this candidate before
