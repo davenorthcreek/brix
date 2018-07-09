@@ -1,97 +1,105 @@
-Section Personal Details
-brix00rf0001	Text	namePrefix	Title (Mr, Ms, Miss, Mrs)
-brix00rf0002	Text	firstName	First Name
-brix00rf0003	Text	lastName	Last Name
-brix00rf0004	Text	address(address1)	Street Address
-brix00rf0005	Text	address(city)	Suburb
-brix00rf0006	Text	address(state)	State
-brix00rf0007	Text	address(zip)	Post Code
-brix00rf0008	Text	phone	Home Phone
-brix00rf0009	Text	mobile	Mobile Phone
-brix00rf0010	Text	email	Email
-brix00rf0011	Date	dateOfBirth	Birthdate
-brix00rf0012	choice	NULL	Were you born outside of Australia?
-brix00rf0012.A1	No
-brix00rf0012.A2	Yes
-brix00rf0013	Text	customText14	What is your nationality?
-brix00rf0014	Text	customText17	Passport Number
-brix00rf0015	choice	source	How did you hear about us?
-brix00rf0015.A1	Internet Search
+Section Basic Information
+brix00rf0002	Text	firstName	First Name required
+brix00rf0003	Text	lastName	Last Name required
+brix00rf0004	Text	address(address1)	Street Address required
+brix00rf0005	Text	address(city)	Suburb required
+brix00rf0006	choice	address(state)	State required
+brix00rf0006.A1 NSW
+brix00rf0006.A2 QLD
+brix00rf0006.A3 VIC
+brix00rf0006.A4 NT
+brix00rf0006.A5 SA
+brix00rf0006.A6 WA
+brix00rf0006.A7 TAS
+brix00rf0007	Text	address(zip)	Post Code required
+brix00rf0009	Tel	mobile	Mobile Phone required
+brix00rf0010	Text	email	Email required
+brix00rf0032	multichoice	occupation	Occupation (You Can Select More Than One Option) required
+brix00rf0032.A1 Skilled Labourer
+brix00rf0032.A2 General Labourer
+brix00rf0032.A3	Aluminium/Glazer
+brix00rf0032.A4	Asbestos Removalist
+brix00rf0032.A5	Boilermaker/Welder
+brix00rf0032.A6	Brick/Block Layer
+brix00rf0032.A7	Carpenter
+brix00rf0032.A8	Civil Engineer
+brix00rf0032.A9	Civil Labourer
+brix00rf0032.A10	Concrete Patcher
+brix00rf0032.A11	Concrete Pump Operator
+brix00rf0032.A12	Concreter
+brix00rf0032.A13	Confined Space Labourer
+brix00rf0032.A14	Crane Operator
+brix00rf0032.A15	Demolition Labourer
+brix00rf0032.A16	Diesel Mechanic
+brix00rf0032.A17	Dogman
+brix00rf0032.A18	Electrical Trade Assistant
+brix00rf0032.A19	Electrician
+brix00rf0032.A20	Excavator Operator
+brix00rf0032.A21	Forklift Operator
+brix00rf0032.A22	Formworker
+brix00rf0032.A23	General Labourer
+brix00rf0032.A24	Gyprocker
+brix00rf0032.A25	HC/HM Operator
+brix00rf0032.A26	Hoist Operator
+brix00rf0032.A27	HR/MR Operator
+brix00rf0032.A28	Mechanical Fitter
+brix00rf0032.A29	Metal Fabricator
+brix00rf0032.A30	NBN Worker
+brix00rf0032.A31	Pipelayer
+brix00rf0032.A32	Plasterer
+brix00rf0032.A33	Plumber
+brix00rf0032.A34	Renderer
+brix00rf0032.A35	Rigger
+brix00rf0032.A36	RISI Labourer
+brix00rf0032.A37	RIW Labourer
+brix00rf0032.A38	Scaffolder
+brix00rf0032.A39	Labourer
+brix00rf0032.A40	Steelfixer
+brix00rf0032.A41	Sheet Metal Worker
+brix00rf0032.A42	Ticketed Labourer
+brix00rf0032.A43	Tiler
+brix00rf0032.A44	Trade Assistant
+brix00rf0032.A45	Traffic Controller
+brix00rf0032.A46	Other
+brix00rf0030    textarea customTextBlock3 Briefly outline your experience
+Section Detailed Information
+brix00rf0011	Date	dateOfBirth	Birthdate required
+brix00rf0012	choice	customText12	Visa Status required
+brix00rf0012.A1	Australian Citizen
+brix00rf0012.A2	Australian Resident
+brix00rf0012.A3 Working Holiday Visa (417)
+brix00rf0012.A4 Working Holiday Visa (462)
+brix00rf0012.A5 Visitor Visa (600)
+brix00rf0012.A6 Student Visa (500)
+brix00rf0012.A7 Defacto Visa
+brix00rf0012.A8 Partner Visa
+brix00rf0012.A9 Skilled Nominated Visa (190)
+brix00rf0012.A10    Temporary Work Skilled visa (457)
+brix00rf0012.A11    Temporary Skilled Shortage Visa (482)
+brix00rf0012.A12    Other
+brix00rf0013    List	nationality.csv	customText14   What is your country of birth as stated on passport? required
+brix00rf0015	choice	source	How did you hear about us? required
+brix00rf0015.A1	Google Search
 brix00rf0015.A2	Website
-brix00rf0015.A3	SEEK.com.au
-brix00rf0015.A4	Gumtree
-brix00rf0015.A5	Facebook
-brix00rf0015.A6	Advert in Hostel
-brix00rf0015.A7	Mining Links
-brix00rf0015.A8	Friend
-brix00rf0015.A9	Other
-Section Next of Kin
-brix00rf0016	Text	customText4	Name
-brix00rf0017	Text	customText13	Contact Number
+brix00rf0015.A3	Advert in Hostel
+brix00rf0015.A4 Referral
+brix00rf0015.A5	Seek.com.au
+brix00rf0015.A6	Indeed.com.au
+brix00rf0015.A7	Gumtree.com.au
+brix00rf0015.A8	LinkedIn
+brix00rf0015.A9	Facebook
+brix00rf0015.A10	Other
+Section Emergency Contact
+brix00rf0016	Text	customText4   Emergency Contact Name required
+brix00rf0017	Tel	customText13  Emergency Contact Number required
 Section Personal History
-brix00rf0018	choice	Note	Have you ever failed a medical exam?
+brix00rf0018	choice	Note	Have you ever failed a medical exam? required
 brix00rf0018.A1	Yes
 brix00rf0018.A2	No
-brix00rf0019	choice	Note	Have you ever failed a drug test?
+brix00rf0019	choice	Note	Have you ever failed a drug test? required
 brix00rf0019.A1	Yes
 brix00rf0019.A2	No
-Section Bank Information
-brix00rf0022	Text	customText3	BSB
-brix00rf0023	Text	customText5	Account Number
-Section Tax Information
-brix00rf0024	Text	customText18	TFN
-brix00rf0025	Text	customText11	ABN
-Section Super Information
-brix00rf0026	Text	customText19	Super Fund
-brix00rf0029	Text	customText7	Super Membership Number
-Section Professional Details
-brix00rf0030	Text	customTextBlock3	Occupation
-brix00rf0032	choice	occupation	Primary Position
-brix00rf0032.A1	Aluminium/Glazer
-brix00rf0032.A2	Asbestos Removalist
-brix00rf0032.A3	Boilermaker/Welder
-brix00rf0032.A4	Brick/Block Layer
-brix00rf0032.A5	Carpenter
-brix00rf0032.A6	Civil Engineer
-brix00rf0032.A7	Civil Labourer
-brix00rf0032.A8	Concrete Patcher
-brix00rf0032.A9	Concrete Pump Operator
-brix00rf0032.A10	Concreter
-brix00rf0032.A11	Confined Space Labourer
-brix00rf0032.A12	Crane Operator
-brix00rf0032.A13	Demolition Labourer
-brix00rf0032.A14	Diesel Mechanic
-brix00rf0032.A15	Dogman
-brix00rf0032.A16	Electrical Trade Assistant
-brix00rf0032.A17	Electrician
-brix00rf0032.A18	Excavator Operator
-brix00rf0032.A19	Forklift Operator
-brix00rf0032.A20	Formworker
-brix00rf0032.A21	General Labourer
-brix00rf0032.A22	Gyprocker
-brix00rf0032.A23	HC/HM Operator
-brix00rf0032.A24	Hoist Operator
-brix00rf0032.A25	HR/MR Operator
-brix00rf0032.A26	Mechanical Fitter
-brix00rf0032.A27	Metal Fabricator
-brix00rf0032.A28	NBN Worker
-brix00rf0032.A29	Pipelayer
-brix00rf0032.A30	Plasterer
-brix00rf0032.A31	Plumber
-brix00rf0032.A32	Renderer
-brix00rf0032.A33	Rigger
-brix00rf0032.A34	RISI Labourer
-brix00rf0032.A35	RIW Labourer
-brix00rf0032.A36	Scaffolder
-brix00rf0032.A37	Labourer
-brix00rf0032.A38	Steelfixer
-brix00rf0032.A39	Sheet Metal Worker
-brix00rf0032.A40	Ticketed Labourer
-brix00rf0032.A41	Tiler
-brix00rf0032.A42	Trade Assistant
-brix00rf0032.A43	Traffic Controller
-brix00rf0032.A44	Other
-brix00rf0034	multichoice	customTextBlock2	Current Tickets and Licenses
+brix00rf0034	multichoice	customTextBlock2	Current Tickets and Licenses (You Can Select More Than One Option) required
 brix00rf0034.A1	Acciona Inducted
 brix00rf0034.A2	Asbestos ID + Awareness
 brix00rf0034.A3	Asbestos – Class A
@@ -151,34 +159,39 @@ brix00rf0034.A56	Working Safely at Heights
 brix00rf0034.A57	Yellow Card – Scissor Lift
 brix00rf0034.A58	Yellow Card – Under 11 Meters
 brix00rf0034.A59	Other
-brix00rf0087	Date	dateAvailable	When will you be available for work?
-brix00rf0088	multichoice	customText15	Please select your preferred working hours (you may select more than one option)
-brix00rf0088.A1	Day Shift
-brix00rf0088.A2	Night Shift
-brix00rf0088.A3	Weekends
-brix00rf0091	choice	customText16	Do you have your own transportation?
+brix00rf0091	choice	customText16	Do you have your own transportation? required
 brix00rf0091.A1	No
 brix00rf0091.A2	Yes
-brix00rf0092	Text	customText8	Please provide your drivers license number
+Section Additional Information
+brix00rf0014	Text	customText17	Passport Number (Non Australian citizens only)
+brix00rf0200    radio   none    Preferred payment method required
+brix00rf0200.A1 TFN
+brix00rf0200.A2 ABN
+brix00rf0024	Text	customText18	TFN
+brix00rf0025	Text	customText11	ABN
+Section Bank Information
+brix00rf0022	Text	customText3	BSB
+brix00rf0023	Text	customText5	Account Number
 Section Attachments
-brix00rf0093	upload	file1	Please attach your Health & Safety General Construction Induction Card (White Card)
 brix00rf0094	upload	file2	Please attach your resume if you have one
-brix00rf0095    upload  file3   Any Additional File to Upload
+brix00rf0191    upload  file4   Optional Ticket 1
+brix00rf0192    upload  file5   Optional Ticket 2
+brix00rf0193    upload  file6   Optional Ticket 3
+brix00rf0194    upload  file7   Optional Ticket 4
+brix00rf0195    upload  file8   Optional Ticket 5
+brix00rf0293	upload	file1	Passport Scan
+brix00rf0095    upload  file3   Driver's License
 Section Reference 1
 brix00rf0096	multiple	recommender1	Reference 1
 brix00rf0096.A1	Text	referenceName	Reference Name
 brix00rf0096.A2	Text	referenceTitle	Reference Position
 brix00rf0096.A3	Text	referencePhone	Phone No:
 brix00rf0096.A4	Text	companyName Company
-brix00rf0096.A5	Text	candidateTitle	Position Held
-brix00rf0096.A6	Date	employmentStart Start Date
-brix00rf0096.A7	Date	employmentEnd   End Date
+brix00rf0096.A5	Text	candidateTitle	Your Position Held
 Section Reference2
 brix00rf0103	multiple	recommender2	Reference 2
 brix00rf0103.A1	Text	referenceName	Reference Name
 brix00rf0103.A2	Text	referenceTitle	Reference Position
 brix00rf0103.A3	Text	referencePhone	Phone No:
 brix00rf0103.A4	Text	companyName	Company
-brix00rf0103.A5	Text	candidateTitle	Position Held
-brix00rf0103.A6	Date	employmentStart	Start Date
-brix00rf0103.A7	Date	employmentEnd	End Date
+brix00rf0103.A5	Text	candidateTitle	Your Position Held

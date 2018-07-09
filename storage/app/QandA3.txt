@@ -8,7 +8,6 @@ brix00rf0025	Text	customText11	ABN
 Section Bank Information
 brix00rf0022	Text	customText3	BSB
 brix00rf0023	Text	customText5	Account Number
-
 Section Attachments
 brix00rf0094	upload	file2	Please attach your resume if you have one
 brix00rf0191    upload  file4   Optional Ticket 1
