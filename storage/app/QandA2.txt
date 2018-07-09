@@ -1,22 +1,33 @@
 Section Detailed Information
 brix00rf0011	Date	dateOfBirth	Birthdate required
-brix00rf0012	choice	NULL	Visa Status required
-brix00rf0012.A1	No
-brix00rf0012.A2	Yes
-brix00rf0013    List	nationality.csv	customText14   What is your nationality? required
+brix00rf0012	choice	customText12	Visa Status required
+brix00rf0012.A1	Australian Citizen
+brix00rf0012.A2	Australian Resident
+brix00rf0012.A3 Working Holiday Visa (417)
+brix00rf0012.A4 Working Holiday Visa (462)
+brix00rf0012.A5 Visitor Visa (600)
+brix00rf0012.A6 Student Visa (500)
+brix00rf0012.A7 Defacto Visa
+brix00rf0012.A8 Partner Visa
+brix00rf0012.A9 Skilled Nominated Visa (190)
+brix00rf0012.A10    Temporary Work Skilled visa (457)
+brix00rf0012.A11    Temporary Skilled Shortage Visa (482)
+brix00rf0012.A12    Other
+brix00rf0013    List	nationality.csv	customText14   What is your country of birth as stated on passport? required
 brix00rf0015	choice	source	How did you hear about us? required
-brix00rf0015.A1	Internet Search
+brix00rf0015.A1	Google Search
 brix00rf0015.A2	Website
-brix00rf0015.A3	SEEK.com.au
-brix00rf0015.A4	Gumtree
-brix00rf0015.A5	Facebook
-brix00rf0015.A6	Advert in Hostel
-brix00rf0015.A7	Mining Links
-brix00rf0015.A8	Friend
-brix00rf0015.A9	Other
+brix00rf0015.A3	Advert in Hostel
+brix00rf0015.A4 Referral
+brix00rf0015.A5	Seek.com.au
+brix00rf0015.A6	Indeed.com.au
+brix00rf0015.A7	Gumtree.com.au
+brix00rf0015.A8	LinkedIn
+brix00rf0015.A9	Facebook
+brix00rf0015.A10	Other
 Section Emergency Contact
 brix00rf0016	Text	customText4   Emergency Contact Name required
-brix00rf0017	Text	customText13  Emergency Contact Number required
+brix00rf0017	Tel	customText13  Emergency Contact Number required
 Section Personal History
 brix00rf0018	choice	Note	Have you ever failed a medical exam? required
 brix00rf0018.A1	Yes
@@ -24,7 +35,7 @@ brix00rf0018.A2	No
 brix00rf0019	choice	Note	Have you ever failed a drug test? required
 brix00rf0019.A1	Yes
 brix00rf0019.A2	No
-brix00rf0034	multichoice	customTextBlock2	Current Tickets and Licenses
+brix00rf0034	multichoice	customTextBlock2	Current Tickets and Licenses (You Can Select More Than One Option) required
 brix00rf0034.A1	Acciona Inducted
 brix00rf0034.A2	Asbestos ID + Awareness
 brix00rf0034.A3	Asbestos – Class A

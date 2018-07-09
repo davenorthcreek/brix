@@ -30,13 +30,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Select2 -->
   <link rel="stylesheet" href="{{ asset ("bower_components/select2/dist/css/select2.min.css") }}"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.8/select2-bootstrap.min.css" type="text/css"/>
-
+  <link rel="stylesheet" href="{{ asset ("/bower_components/intl-tel-input/build/css/intlTelInput.min.css") }}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <style>
+    .iti-flag {background-image: url("{{ asset ("/bower_components/intl-tel-input/build/img/flags.png") }}");}
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+        .iti-flag {background-image: url("{{ asset ("/bower_components/intl-tel-input/build/img/flags@2x.png") }}");}
+    }
+  </style>
 </head>
 <!--
 BODY TAG OPTIONS:

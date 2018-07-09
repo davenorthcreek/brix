@@ -110,7 +110,7 @@ class Form extends ModelObject
 					$currentQ->add_answer($q);
 				} else if (preg_match("/brix.*/", $first)) {
 					//normal full line
-                    if (!in_array($second, ['Text', 'Date', 'choice', 'multichoice', 'upload', 'multiple', 'List', 'radio'])) {
+                    if (!in_array($second, ['Text', 'Tel', 'textarea', 'Date', 'choice', 'multichoice', 'upload', 'multiple', 'List', 'radio'])) {
                         $q = new QuestionMapping();
     					$q->set("form", $this);
     					$q->set("QAId", $elements[0]);

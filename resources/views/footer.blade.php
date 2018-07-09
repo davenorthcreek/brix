@@ -6,5 +6,5 @@
       Built by <a href="http://northcreek.ca">North Creek</a>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="{{$home}}">{{$source}}</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a href="{{$home}}">{{$source}}</a>.</strong> All rights reserved.
   </footer>

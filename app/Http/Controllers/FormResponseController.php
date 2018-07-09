@@ -34,9 +34,9 @@ class FormResponseController extends Controller
         if ($candidate) {
             $data['candidate'] = $candidate;
         }
-        //set up exceptions for complex html
-        $data['exceptions'] = $this->setExceptions($candidate);
         if ($subform == 1) { //start of process
+            //set up exceptions for complex html
+            $data['exceptions'] = $this->setExceptions($candidate);
             $data = $this->setupFormControllers($data, $source, $subform);
             $data['candidate'] = new \Stratum\Model\Candidate();
             $data['email'] = '';
@@ -58,6 +58,8 @@ class FormResponseController extends Controller
             } else {
                 $subform--;
             }
+            //set up exceptions for complex html
+            $data['exceptions'] = $this->setExceptions($candidate);
             $data = $this->setupFormControllers($data, $source, $subform);
             $email = $candidate->get("email");
             $data['email'] = $email;
@@ -240,12 +242,12 @@ class FormResponseController extends Controller
 
     private function setExceptions($candidate) {
 
-        if ($candidate && $candidate->get("customText14") == 'Australia') {
-            $exc['brix00rf0014'] = '';
+        if ($candidate && $candidate->get("customText12") == 'Australian Citizen') {
+            $exc['brix00rf0014'] = '<!-- unnnecessary -->';
         } else {
             $exc['brix00rf0014'] = <<<EOT
 <div class="form-group">
-<label for="customText17*Passport Number[]">Passport Number</label>
+<label for="customText17*Passport Number[]">Passport Number (Non Australian citizens only)</label>
 <input class="form-control" name="customText17*Passport Number[]" value="" type="text">
 </div>
 EOT;

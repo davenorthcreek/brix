@@ -83,6 +83,9 @@
 <script src={{ asset("/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js") }}></script>
 <!-- Select2 -->
 <script src={{ asset("/bower_components/select2/dist/js/select2.full.min.js") }}></script>
+<!-- Intl-Tel-Input -->
+<script src={{ asset("/bower_components/intl-tel-input/build/js/intlTelInput.min.js") }}></script>
+
 <script type="text/javascript">
     $(function () {
       // Replace the <textarea id="editor1"> with a CKEditor
@@ -143,6 +146,38 @@
          endDate : dt
      });
 
+     var telInput = $('.my_phone_number'),
+        errorMsg = $("#phone-error-msg"),
+        validMsg = $("#phone-valid-msg");
+
+     $('.my_phone_number').intlTelInput({
+         utilsScript: "{{asset ("/bower_components/intl-tel-input/build/js/utils.js") }}",
+         initialCountry: "au",
+         onlyCountries: ["au"],
+     });
+
+     var reset_phone = function() {
+         telInput.removeClass("error");
+         errorMsg.addClass("hide");
+         validMsg.addClass("hide");
+     }
+
+     // on blur: validate
+     telInput.blur(function() {
+      reset_phone();
+      if ($.trim(telInput.val())) {
+        if (telInput.intlTelInput("isValidNumber")) {
+          validMsg.removeClass("hide");
+        } else {
+          telInput.addClass("error");
+          errorMsg.removeClass("hide");
+        }
+      }
+    });
+
+    // on keyup / change flag: reset
+    telInput.on("keyup change", reset_phone);
+
 
      $("input:radio[name='none*Preferred payment method[]']").change(function() {
          var rad = this.value;
@@ -159,6 +194,24 @@
              $('#brix00rf0025_label').css('display', "block");
          }
      });
+
+     $("#confirmValues").on('submit', function(e) {
+        var isvalid = telInput.intlTelInput("isValidNumber");
+        if (!isvalid) {
+            e.preventDefault();
+            alert("Please provide a valid mobile number.");
+        }
+    });
+
+    function getvalues(f)
+    {
+        var form=$("#"+f);
+        var str='';
+        $("input:not('input:submit')", form).each(function(i){
+            str+='\n'+$(this).prop('name')+': '+$(this).val();
+        });
+        return str;
+    }
 
 </script>
 @endsection

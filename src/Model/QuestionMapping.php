@@ -362,6 +362,16 @@ class QuestionMapping extends ModelObject
             } else if ($type == "upload") {
                 $this->log_debug("File Upload element: $label $id");
                 echo("<input class='form-control' name='$label' type='file' id='$id' value='".$val."'>");
+            } else if ($type == "textarea") {
+                echo("<textarea class='form-control' name='$label' rows='4' id='$id' placeholder='Enter...'>$val</textarea>");
+            } else if ($type == "Tel") {
+                echo("<input class='form-control my_phone_number' name='$label' type='tel' id='$id' value='".$val."'");
+                if ($required) {
+                    echo ' required="true"';
+                }
+                echo ">";
+                echo '<span id="phone-valid-msg" class="hide">✓ Valid</span>';
+                echo '<span id="phone-error-msg" class="hide">Invalid number</span>';
             } else {
                 echo("<input class='form-control' name='$label' type='text' id='$id' value='".$val."'");
                 if ($required) {
