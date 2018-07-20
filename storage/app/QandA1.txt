@@ -1,6 +1,6 @@
 Section Basic Information
-brix00rf0002	Text	firstName	First Name required
-brix00rf0003	Text	lastName	Last Name required
+brix00rf0002	Text	firstName	First Name (as appears on passport) required
+brix00rf0003	Text	lastName	Last Name (as appears on passport) required
 brix00rf0004	Text	address(address1)	Street Address required
 brix00rf0005	Text	address(city)	Suburb required
 brix00rf0006	choice	address(state)	State required
