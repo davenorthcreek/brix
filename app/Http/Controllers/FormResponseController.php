@@ -29,6 +29,7 @@ class FormResponseController extends Controller
 
     public function index(Request $request, $source, $subform=1) {
         $data = [];
+        $data['gtm'] = env('GTM_ID')?env('GTM_ID'):'GTM-PHVNHQ8'; //default to Brix
         //load candidate from cache if we've had this candidate before
         $candidate = Cache::get($request->input("email"));
         if ($candidate) {
