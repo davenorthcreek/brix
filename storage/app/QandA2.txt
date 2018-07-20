@@ -37,6 +37,7 @@ brix00rf0019.A1	Yes
 brix00rf0019.A2	No
 brix00rf0034	multichoice	customTextBlock2	Current Tickets and Licenses (You Can Select More Than One Option) required
 brix00rf0034.A54	H&S General Construction (White Card)
+brix00rf0034.A60	None
 brix00rf0034.A1	Acciona Inducted
 brix00rf0034.A2	Asbestos ID + Awareness
 brix00rf0034.A3	Asbestos – Class A
