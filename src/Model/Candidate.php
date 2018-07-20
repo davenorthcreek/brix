@@ -666,7 +666,7 @@ class Candidate extends ModelObject
         echo "\n<th><label>Value</label></th>\n";
         echo "\n</tr></thead>";
         echo "\n<tbody>";
-        $summary = ["firstName", "lastName", "email", "mobile", "dateOfBirth", "occupation", "customText18", "customText11", "skillSet", "certifications"];
+        $summary = ["firstName", "lastName", "email", "mobile", "dateOfBirth", "occupation", "customText18", "customText11", "customTextBlock2"];
         foreach ($summary as $item) {
             $value = '';
             if ($item == "dateOfBirth") {

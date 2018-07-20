@@ -599,6 +599,7 @@ class Bullhorn {
 		$cand_data = $candidate->marshalToJSON();
 		$put_url = $this->base_url."/entity/Candidate";
 		$put_uri = $this->service->getRestUri($put_url, $this->session_key);
+        $this->log_debug($put_uri->getAbsoluteUri());
 		$result = $this->httpClient->retrieveResponse($put_uri, $cand_data, [], 'PUT');
 		$decoded = $this->extract_json($result);
 		$this->log_debug("Create new candidate has response: ");
@@ -619,6 +620,7 @@ class Bullhorn {
 		$cand_data = $candidate->marshalToJSON();
 		$post_url = $this->base_url."entity/Candidate/".$id;
 		$post_uri = $this->service->getRestUri($post_url, $this->session_key);
+        $this->log_debug($post_uri->getAbsoluteUri());
 		$result = $this->httpClient->retrieveResponse($post_uri, $cand_data, [], 'POST');
 		$decoded = $this->extract_json($result);
 		$this->log_debug("Update $id has response: ");

@@ -36,6 +36,7 @@ brix00rf0019	choice	Note	Have you ever failed a drug test? required
 brix00rf0019.A1	Yes
 brix00rf0019.A2	No
 brix00rf0034	multichoice	customTextBlock2	Current Tickets and Licenses (You Can Select More Than One Option) required
+brix00rf0034.A54	H&S General Construction (White Card)
 brix00rf0034.A1	Acciona Inducted
 brix00rf0034.A2	Asbestos ID + Awareness
 brix00rf0034.A3	Asbestos – Class A
@@ -89,7 +90,6 @@ brix00rf0034.A50	Spotter
 brix00rf0034.A51	Spotter Ticket
 brix00rf0034.A52	Telescopic Materials Handler
 brix00rf0034.A53	Traffic Management
-brix00rf0034.A54	H&S General Construction (White Card)
 brix00rf0034.A55	West Connex Inducted
 brix00rf0034.A56	Working Safely at Heights
 brix00rf0034.A57	Yellow Card – Scissor Lift
