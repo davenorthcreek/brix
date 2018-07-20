@@ -212,7 +212,7 @@ class FormResponseController extends Controller
         $data['form'] = $fc->setupForm(env('SUBFORMS') + 1);
         $data = $this->setupColours($source, $data);
         $data['thecandidate'] = $candidate;
-        if ($source == 'Brix') {
+        if (strcasecmp($source, "brix") == 0) {
             $data['fullSource'] = 'Brix Projects';
             $data['adminEmail'] = 'admin@brixprojects.com.au';
             $data['homepage']   = 'https://www.brixprojects.com.au';
