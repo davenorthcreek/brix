@@ -115,7 +115,7 @@ class FormResponseController extends Controller
         if ($address) {
             $state = $address->get("state");
             if ($state) {
-                $candidate->set("customText14", $state);
+                $candidate->set("customText2", $state);
             }
         }
         Log::debug("received ".$candidate->getName()); //triggers setting name value
