@@ -13,7 +13,7 @@ brix00rf0012.A9 Skilled Nominated Visa (190)
 brix00rf0012.A10    Temporary Work Skilled visa (457)
 brix00rf0012.A11    Temporary Skilled Shortage Visa (482)
 brix00rf0012.A12    Other
-brix00rf0013    List	nationality.csv	customText14   What is your country of birth as stated on passport? required
+brix00rf0013    List	nationality.csv	nationality   What is your country of birth as stated on passport? required
 brix00rf0015	choice	source	How did you hear about us? required
 brix00rf0015.A1	Google Search
 brix00rf0015.A2	Website
