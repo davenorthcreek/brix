@@ -179,7 +179,7 @@
     telInput.on("keyup change", reset_phone);
 
 
-     $("input:radio[name='none*Preferred payment method[]']").change(function() {
+     $("input:radio[name='customText15*Preferred payment method[]']").change(function() {
          var rad = this.value;
          if (rad == 'TFN') {
              $('#brix00rf0024').prop("disabled", false );
