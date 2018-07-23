@@ -110,6 +110,14 @@ class FormResponseController extends Controller
         }
         $candidate = $cc->populateFromRequest($candidate, $request->all(), $formResult);
         $candidate->set("customText20", $source);
+        //copy address(state) to customText14
+        $address = $candidate->get("address");
+        if ($address) {
+            $state = $address->get("state");
+            if ($state) {
+                $candidate->set("customText14", $state);
+            }
+        }
         Log::debug("received ".$candidate->getName()); //triggers setting name value
         $data['candidate'] = $candidate;
 

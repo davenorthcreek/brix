@@ -1,6 +1,6 @@
 Section Additional Information
 brix00rf0014	Text	customText17	Passport Number (Non Australian citizens only)
-brix00rf0200    radio   none    Preferred payment method required
+brix00rf0200    radio   customText15    Preferred payment method required
 brix00rf0200.A1 TFN
 brix00rf0200.A2 ABN
 brix00rf0024	Text	customText18	TFN
