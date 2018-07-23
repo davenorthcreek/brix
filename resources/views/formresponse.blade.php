@@ -136,15 +136,22 @@
     console.log(dt);
     //DateofBirth picker
     $('.mydateofbirthpicker').datepicker({
-         language: "en-UK",
-         autoclose: true,
-         format: 'dd/mm/yyyy',
-         changeMonth: true,
-         changeYear: true,
-         yearRange: '-110:-18',
-         showButtonPanel: true,
-         endDate : dt
-     });
+        language: "en-UK",
+        autoclose: true,
+        format: 'dd/mm/yyyy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-110:-18',
+        showButtonPanel: true,
+        endDate : dt
+    });
+
+    $('.mydateofbirthpicker').attr('value', '');
+    $('.mydateofbirthpicker').attr("option" , {
+        minDate: null,
+        maxDate: null
+    });
+
 
      var telInput = $('.my_phone_number'),
         errorMsg = $("#phone-error-msg"),
