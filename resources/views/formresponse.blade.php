@@ -207,6 +207,9 @@
         if (!isvalid) {
             e.preventDefault();
             alert("Please provide a valid mobile number.");
+        } else {
+            $("#confirmV").innerHTML="Sending...";
+            $("#confirmV").prop("disabled", true);
         }
     });
 
