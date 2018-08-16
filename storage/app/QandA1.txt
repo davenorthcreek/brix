@@ -50,8 +50,6 @@ brix00rf0032.A32	Plasterer
 brix00rf0032.A33	Plumber
 brix00rf0032.A34	Renderer
 brix00rf0032.A35	Rigger
-brix00rf0032.A36	RISI Labourer
-brix00rf0032.A37	RIW Labourer
 brix00rf0032.A38	Scaffolder
 brix00rf0032.A39	Labourer
 brix00rf0032.A40	Steelfixer
