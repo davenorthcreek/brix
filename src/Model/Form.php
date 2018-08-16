@@ -69,10 +69,11 @@ class Form extends ModelObject
 			while (($line = fgets($handle)) !== false) {
 				// process the line read.
 				//answerId first, then text value
-                //$this->log_debug($line);
+                $this->log_debug($line);
 				$elements = preg_split("/\s+/", $line);
 				$first = $elements[0];
                 $second = $elements[1];
+                $this->log_debug($first);
                 if ($first == "Section") {
                     if ($currentQ) {
                         $sections[$sectionCounter][] = $currentQ;
@@ -110,7 +111,20 @@ class Form extends ModelObject
 					$currentQ->add_answer($q);
 				} else if (preg_match("/brix.*/", $first)) {
 					//normal full line
-                    if (!in_array($second, ['Text', 'Tel', 'textarea', 'Date', 'choice', 'multichoice', 'upload', 'multiple', 'List', 'radio'])) {
+                    if (!in_array($second, [
+                            'Text',
+                            'Tel',
+                            'textarea',
+                            'Date',
+                            'choice',
+                            'multichoice',
+                            'multichoice2',
+                            'upload',
+                            'multiple',
+                            'List',
+                            'radio'
+                            ]
+                        )) {
                         $q = new QuestionMapping();
     					$q->set("form", $this);
     					$q->set("QAId", $elements[0]);
@@ -146,7 +160,7 @@ class Form extends ModelObject
     					$mapKey = $first;
     					$currentQ->set("form", $this);
     					$currentQ->set("QId", $first);
-    					if (in_array($elements[1], ["choice", "multichoice", "radio"])) {
+    					if (in_array($elements[1], ["choice", "multichoice", "multichoice2", "radio"])) {
     						//choose one of the following options, like boolean [OR]
                             //choose one or more of the following options
     						$currentQ->set("BullhornField", $elements[2]);

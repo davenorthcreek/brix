@@ -14,7 +14,7 @@ brix00rf0006.A7 TAS
 brix00rf0007	Text	address(zip)	Post Code required
 brix00rf0009	Tel	mobile	Mobile Phone required
 brix00rf0010	Text	email	Email required
-brix00rf0032	multichoice	occupation	Occupation (You Can Select More Than One Option) required
+brix00rf0032	multichoice2	occupation	Occupation (You Can Select One or at most Two Options) required
 brix00rf0032.A1 Skilled Labourer
 brix00rf0032.A2 General Labourer
 brix00rf0032.A3	Aluminium/Glazer

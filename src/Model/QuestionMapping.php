@@ -116,7 +116,7 @@ class QuestionMapping extends ModelObject
         $val = htmlentities(implode(',', array_keys($valueMap)), ENT_QUOTES);
 
         $type = $this->get("type");
-        if ($type == "multichoice") {
+        if ($type == "multichoice" || $type == "multichoice2") {
             $mult = true;
         }
         $id = $this->getBestId();
@@ -289,7 +289,7 @@ class QuestionMapping extends ModelObject
                     $other .= "'>\n";
                     echo $other;
                 }
-            } else if ($type == 'choice' || $type == 'multichoice') {
+            } else if ($type == 'choice' || $type == 'multichoice' || $type == 'multichoice2') {
                 $otherVal = '';
                 $other = $this->addOtherWrapper($human, $label, $valueMap);
                 $all_listed = false;
@@ -298,9 +298,14 @@ class QuestionMapping extends ModelObject
                         $all_listed = true;
                     }
                 }
-                echo "<select class='form-control select2";
+                echo "<select class='form-control ";
+                if ($type == 'multichoice2') {
+                    echo "select2_2";
+                } else {
+                    echo "select2";
+                }
                 echo "' ";
-                if ($type == 'multichoice') {
+                if ($type == 'multichoice' || $type == 'multichoice2') {
                     echo "multiple='multiple'";
                 }
                 echo " id='$label' data-placeholder='$visible' name='$label'";

@@ -88,12 +88,18 @@
 
 <script type="text/javascript">
     $(function () {
-      // Replace the <textarea id="editor1"> with a CKEditor
-      // instance, using default configuration.
       $(".select2").select2({
           theme: "bootstrap"
       });
     });
+
+    $(function () {
+      $(".select2_2").select2({
+          theme: "bootstrap",
+          maximumSelectionLength: 2
+      });
+    });
+
 
     var btnClassClick = function(e) {
         if ($("i", this).hasClass("fa-plus")) {
