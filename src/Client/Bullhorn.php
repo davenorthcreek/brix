@@ -218,7 +218,7 @@ class Bullhorn {
 			$headers = substr($authResponse, 0, $html_start);
 		}
 		$this->log_debug($headers);
-		if (preg_match("|Location: (https?://\S+)|", $headers, $m)) {
+		if (preg_match("|Location: (\S+)|", $headers, $m)) {
 			$this->log_debug("Location: ".$m[1]);
 			if (preg_match("|code=(\S+)\&client_id|", $m[1], $n)) {
 				$code = urldecode($n[1]);

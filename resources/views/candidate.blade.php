@@ -8,10 +8,14 @@
                     <div class="panel-heading">{{ $errormessage['message'] }}</div>
                     <div class="panel-body">
                         @foreach ($errormessage['errors'] as $error)
-                            Property:&nbsp;<strong>{{$error['propertyName'] }}</strong><br>
-                            Value:&nbsp;&nbsp;&nbsp;<strong>{{$thecandidate->get_a_string($thecandidate->get($error['propertyName'])) }}</strong><br>
-                            Severity:&nbsp;<strong>{{$error['severity'] }}</strong><br>
-                            Issue:&nbsp;&nbsp;&nbsp;<strong>{{$error['type'] }}</strong><br><hr>
+                            @if(is_array($error))
+                                @if(array_key_exists('propertyName', $error))
+                                    Property:&nbsp;<strong>{{$error['propertyName'] }}</strong><br>
+                                    Value:&nbsp;&nbsp;&nbsp;<strong>{{$thecandidate->get_a_string($thecandidate->get($error['propertyName'])) }}</strong><br>
+                                @endif
+                                Severity:&nbsp;<strong>{{$error['severity'] }}</strong><br>
+                                Issue:&nbsp;&nbsp;&nbsp;<strong>{{$error['type'] }}</strong><br><hr>
+                            @endif
                         @endforeach
                     </div>
                 </div>
