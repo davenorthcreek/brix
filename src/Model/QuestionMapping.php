@@ -350,7 +350,7 @@ class QuestionMapping extends ModelObject
                     echo ">$aval</label>\n";
                 }
             } else if ($type == "Date") {
-                if ($label == 'dateOfBirth*Birthdate[]') {
+                if (starts_with($label, 'dateOfBirth')) {
                     $pickerName = 'mydateofbirthpicker';
                 } else {
                     $pickerName = 'mydatepicker';
