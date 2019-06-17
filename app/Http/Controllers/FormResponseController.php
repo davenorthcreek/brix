@@ -224,6 +224,10 @@ class FormResponseController extends Controller
             $data['fullSource'] = 'Brix Projects';
             $data['adminEmail'] = 'admin@brixprojects.com.au';
             $data['homepage']   = 'https://www.brixprojects.com.au';
+        } else if (strcasecmp($source, "civil") == 0) {
+            $data['fullSource'] = 'CivilForm';
+            $data['adminEmail'] = 'admin@civilform.com.au';
+            $data['homepage']   = 'https://www.civilform.com.au';
         } else {
             $data['fullSource'] = 'Advanced Group Services';
             $data['adminEmail'] = 'admin@advancedgroupservices.com.au';
@@ -236,11 +240,15 @@ class FormResponseController extends Controller
         if (strcasecmp($source, "brix") == 0) {
             $colour = "blue";
             $box = "primary";
-            $home = "http://www.brixprojects.com.au/";
+            $home = "https://www.brixprojects.com.au/";
+        } else if (strcasecmp($source, "civil") == 0) {
+            $colour = "blue";
+            $box = "warning";
+            $home = "https://www.civilform.com.au";
         } else {
             $colour = "yellow";
             $box = "warning";
-            $home = "http://www.advancedgroupservices.com.au/";
+            $home = "https://www.advancedgroupservices.com.au/";
         }
         $data['colour'] = $colour;
         $data['box_style'] = $box;
