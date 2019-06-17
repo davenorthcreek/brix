@@ -15,48 +15,35 @@ brix00rf0007	Text	address(zip)	Post Code required
 brix00rf0009	Tel	mobile	Mobile Phone required
 brix00rf0010	Text	email	Email required
 brix00rf0032	multichoice2	occupation	Occupation (You Can Select One or at most Two Options) required
-brix00rf0032.A1 Skilled Labourer
-brix00rf0032.A2 General Labourer
-brix00rf0032.A3	Aluminium/Glazer
-brix00rf0032.A4	Asbestos Removalist
-brix00rf0032.A5	Boilermaker/Welder
-brix00rf0032.A6	Brick/Block Layer
-brix00rf0032.A7	Carpenter
-brix00rf0032.A8	Civil Engineer
-brix00rf0032.A9	Civil Labourer
-brix00rf0032.A10	Concrete Patcher
-brix00rf0032.A11	Concrete Pump Operator
-brix00rf0032.A12	Concreter
-brix00rf0032.A13	Confined Space Labourer
-brix00rf0032.A14	Crane Operator
-brix00rf0032.A15	Demolition Labourer
-brix00rf0032.A16	Diesel Mechanic
-brix00rf0032.A17	Dogman
-brix00rf0032.A18	Electrical Trade Assistant
-brix00rf0032.A19	Electrician
-brix00rf0032.A20	Excavator Operator
-brix00rf0032.A21	Forklift Operator
-brix00rf0032.A22	Formworker
-brix00rf0032.A23	General Labourer
-brix00rf0032.A24	Gyprocker
-brix00rf0032.A25	HC/HM Operator
-brix00rf0032.A26	Hoist Operator
-brix00rf0032.A27	HR/MR Operator
-brix00rf0032.A28	Mechanical Fitter
-brix00rf0032.A29	Metal Fabricator
-brix00rf0032.A30	NBN Worker
-brix00rf0032.A31	Pipelayer
-brix00rf0032.A32	Plasterer
-brix00rf0032.A33	Plumber
-brix00rf0032.A34	Renderer
-brix00rf0032.A35	Rigger
-brix00rf0032.A38	Scaffolder
-brix00rf0032.A39	Labourer
-brix00rf0032.A40	Steelfixer
-brix00rf0032.A41	Sheet Metal Worker
-brix00rf0032.A42	Ticketed Labourer
-brix00rf0032.A43	Tiler
-brix00rf0032.A44	Trade Assistant
-brix00rf0032.A45	Traffic Controller
-brix00rf0032.A46	Other
+brix00rf0032.A1 General Labourer
+brix00rf0032.A2 Ticketed Labourer
+brix00rf0032.A3 Skilled Labourer
+brix00rf0032.A4 RIW Labourer
+brix00rf0032.A5 Qualified Caulker
+brix00rf0032.A6 Qualified Grouter
+brix00rf0032.A7 Boilermaker/Welder
+brix00rf0032.A8 Brick/Block Layer
+brix00rf0032.A9 Carpenter
+brix00rf0032.A10    Form-worker
+brix00rf0032.A11    Scaffolder - Basic
+brix00rf0032.A12    Scaffolder - Intermediate
+brix00rf0032.A13    Scaffolder - Advanced
+brix00rf0032.A14    Core driller
+brix00rf0032.A15    Concreter
+brix00rf0032.A16    Concrete cutter
+brix00rf0032.A17    Concrete Patcher
+brix00rf0032.A18    Confined Space Labourer
+brix00rf0032.A19    Excavator Operator
+brix00rf0032.A20    Renderer
+brix00rf0032.A21    Dogman
+brix00rf0032.A22    Rigger
+brix00rf0032.A23    Skilled Steel-fixer
+brix00rf0032.A24    General Steel-fixer
+brix00rf0032.A25    Tiler
+brix00rf0032.A26    Trade Assistant
+brix00rf0032.A27    Crane Operator
+brix00rf0032.A28    Pipe Layer
+brix00rf0032.A29    Asbestos removal
+brix00rf0032.A30    Asbestos Awareness
+brix00rf0032.A31    Other
 brix00rf0030    textarea customTextBlock3 Briefly outline your experience

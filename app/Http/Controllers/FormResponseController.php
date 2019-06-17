@@ -224,14 +224,17 @@ class FormResponseController extends Controller
             $data['fullSource'] = 'Brix Projects';
             $data['adminEmail'] = 'admin@brixprojects.com.au';
             $data['homepage']   = 'https://www.brixprojects.com.au';
+            $data['short']      = 'Brix';
         } else if (strcasecmp($source, "civil") == 0) {
             $data['fullSource'] = 'CivilForm';
             $data['adminEmail'] = 'admin@civilform.com.au';
             $data['homepage']   = 'https://www.civilform.com.au';
+            $data['short']      = 'CF';
         } else {
             $data['fullSource'] = 'Advanced Group Services';
             $data['adminEmail'] = 'admin@advancedgroupservices.com.au';
             $data['homepage']   = 'https://www.advancedgroupservices.com.au';
+            $data['short']      = 'AGS';
         }
         return view('candidate')->with($data);
     }

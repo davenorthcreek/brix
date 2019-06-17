@@ -4,7 +4,7 @@
   <!-- Logo -->
   <a href="{{url("/register/$source/1")}}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini">{{substr($source, 0,4)}}</span>
+    <span class="logo-mini">{{isset($short)?$short:substr($source, 0,4)}}</span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg"><b>{{$source}}</b> Registration Form</span>
   </a>
