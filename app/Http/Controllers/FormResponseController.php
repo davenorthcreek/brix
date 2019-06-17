@@ -38,10 +38,10 @@ class FormResponseController extends Controller
         if ($subform == 1) { //start of process
             //set up exceptions for complex html
             $data['exceptions'] = $this->setExceptions($candidate);
-            $data = $this->setupFormControllers($data, $source, $subform);
             $data['candidate'] = new \Stratum\Model\Candidate();
             $data['email'] = '';
             $data = $this->setupColours($source, $data);
+            $data = $this->setupFormControllers($data, $source, $subform);
             return view('formresponse')->with($data);
         }
         if ($subform > env("SUBFORMS")) { //finished process
@@ -66,6 +66,7 @@ class FormResponseController extends Controller
             $data['email'] = $email;
             Cache::put($email, $candidate, 60);
             $data = $this->setupColours($source, $data);
+
             //submit what we have so far
             Log::debug($data['exceptions']);
 
@@ -82,7 +83,7 @@ class FormResponseController extends Controller
         //expand/collapse all button
         $data['form'] = $form;
         $data['formResult'] = $formResult;
-        $data['page_title'] = "Register with $source";
+        $data['page_title'] = "Register with ".$data['fullSource'];
         $data['index'] = ++$subform;
         if ($subform > env('SUBFORMS')) {
             $data['next'] = 'Submit Values to '.$source;
@@ -220,42 +221,35 @@ class FormResponseController extends Controller
         $data['form'] = $fc->setupForm(env('SUBFORMS') + 1);
         $data = $this->setupColours($source, $data);
         $data['thecandidate'] = $candidate;
-        if (strcasecmp($source, "brix") == 0) {
-            $data['fullSource'] = 'Brix Projects';
-            $data['adminEmail'] = 'admin@brixprojects.com.au';
-            $data['homepage']   = 'https://www.brixprojects.com.au';
-            $data['short']      = 'Brix';
-        } else if (strcasecmp($source, "civil") == 0) {
-            $data['fullSource'] = 'CivilForm';
-            $data['adminEmail'] = 'admin@civilform.com.au';
-            $data['homepage']   = 'https://www.civilform.com.au';
-            $data['short']      = 'CF';
-        } else {
-            $data['fullSource'] = 'Advanced Group Services';
-            $data['adminEmail'] = 'admin@advancedgroupservices.com.au';
-            $data['homepage']   = 'https://www.advancedgroupservices.com.au';
-            $data['short']      = 'AGS';
-        }
         return view('candidate')->with($data);
     }
 
     private function setupColours($source, $data) {
         if (strcasecmp($source, "brix") == 0) {
-            $colour = "blue";
-            $box = "primary";
-            $home = "https://www.brixprojects.com.au/";
+            $data['fullSource'] = 'Brix Projects';
+            $data['short']      = 'Brix';
+            $data['adminEmail'] = 'admin@brixprojects.com.au';
+            $data['colour']    = "blue";
+            $data['box_style'] = "primary";
+            $data['home']      = "https://www.brixprojects.com.au/";
+            $data['homepage']  = "https://www.brixprojects.com.au/";
         } else if (strcasecmp($source, "civil") == 0) {
-            $colour = "blue";
-            $box = "warning";
-            $home = "https://www.civilform.com.au";
+            $data['fullSource'] = 'CivilForm';
+            $data['short']      = 'CF';
+            $data['adminEmail'] = 'admin@civilform.com.au';
+            $data['colour']    = "blue";
+            $data['box_style'] = "warning";
+            $data['home']      = "https://www.civilform.com.au";
+            $data['homepage']  = "https://www.civilform.com.au";
         } else {
-            $colour = "yellow";
-            $box = "warning";
-            $home = "https://www.advancedgroupservices.com.au/";
+            $data['fullSource'] = 'Advanced Group Services';
+            $data['short']      = 'AGS';
+            $data['adminEmail'] = 'admin@advancedgroupservices.com.au';
+            $data['colour']    = "yellow";
+            $data['box_style'] = "warning";
+            $data['home']      = "https://www.advancedgroupservices.com.au/";
+            $data['homepage']  = "https://www.advancedgroupservices.com.au/";
         }
-        $data['colour'] = $colour;
-        $data['box_style'] = $box;
-        $data['home'] = $home;
         $data['source'] = $source;
         return $data;
     }
