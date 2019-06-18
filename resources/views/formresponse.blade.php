@@ -188,7 +188,11 @@
       reset_phone();
       if ($.trim(telInput.val())) {
         var input = document.querySelector(".my_phone_number");
-        if (window.intlTelInput(input, "isValidNumber")) {
+        if (window.intlTelInput(input, {
+            utilsScript: "{{asset ("/bower_components/intl-tel-input/build/js/utils.js") }}",
+            initialCountry: "au",
+            onlyCountries: ["au"],
+            }, "isValidNumber")) {
           validMsg.removeClass("hide");
         } else {
           telInput.addClass("error");
