@@ -61,11 +61,11 @@ class FormResponseController extends Controller
             }
             //set up exceptions for complex html
             $data['exceptions'] = $this->setExceptions($candidate);
-            $data = $this->setupFormControllers($data, $source, $subform);
             $email = $candidate->get("email");
             $data['email'] = $email;
             Cache::put($email, $candidate, 60);
             $data = $this->setupColours($source, $data);
+            $data = $this->setupFormControllers($data, $source, $subform);
 
             //submit what we have so far
             Log::debug($data['exceptions']);
