@@ -170,7 +170,8 @@
         errorMsg = $("#phone-error-msg"),
         validMsg = $("#phone-valid-msg");
 
-     $('.my_phone_number').intlTelInput({
+      var input = document.querySelector(".my_phone_number");
+      window.intlTelInput(input, {
          utilsScript: "{{asset ("/bower_components/intl-tel-input/build/js/utils.js") }}",
          initialCountry: "au",
          onlyCountries: ["au"],
@@ -186,7 +187,8 @@
      telInput.blur(function() {
       reset_phone();
       if ($.trim(telInput.val())) {
-        if (telInput.intlTelInput("isValidNumber")) {
+        var input = document.querySelector(".my_phone_number");
+        if (window.intlTelInput(input, "isValidNumber")) {
           validMsg.removeClass("hide");
         } else {
           telInput.addClass("error");

@@ -50,8 +50,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <style>
     .iti-flag {background-image: url("{{ asset ("/bower_components/intl-tel-input/build/img/flags.png") }}");}
 
-    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-        .iti-flag {background-image: url("{{ asset ("/bower_components/intl-tel-input/build/img/flags@2x.png") }}");}
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .iti-flag {background-image: url("{{ asset ("/bower_components/intl-tel-input/build/img/flags@2x.png") }}");}
     }
   </style>
 </head>
