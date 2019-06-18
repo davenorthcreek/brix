@@ -95,7 +95,9 @@ brix00rf0034.A55	West Connex Inducted
 brix00rf0034.A56	Working Safely at Heights
 brix00rf0034.A57	Yellow Card – Scissor Lift
 brix00rf0034.A58	Yellow Card – Under 11 Meters
-brix00rf0034.A59	Other
+brix00rf0034.A59    White Card
+brix00rf0034.A60    Grey Card
+brix00rf0034.A61	Other
 brix00rf0091	choice	customText16	Do you have your own transportation? required
 brix00rf0091.A1	No
 brix00rf0091.A2	Yes
