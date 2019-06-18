@@ -237,7 +237,7 @@ class FormResponseController extends Controller
             $data['fullSource'] = 'CivilForm';
             $data['short']      = 'CF';
             $data['adminEmail'] = 'admin@civilform.com.au';
-            $data['colour']    = "blue";
+            $data['colour']    = "blue-light";
             $data['box_style'] = "warning";
             $data['home']      = "https://www.civilform.com.au";
             $data['homepage']  = "https://www.civilform.com.au";
