@@ -8,7 +8,7 @@
     <div class="user-panel">
       <div class="pull-left image">
         <a href="{{$home}}">
-            <img src="{{ asset("/images/$source-logo.png") }}" class="img-responsive" alt="Home Page">
+            <img src="{{ asset("/images/".strtolower($source)."-logo.png") }}" class="img-responsive" alt="Home Page">
         </a>
       </div>
     </div>
