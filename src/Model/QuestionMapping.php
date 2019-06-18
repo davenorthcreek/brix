@@ -300,7 +300,7 @@ class QuestionMapping extends ModelObject
                 }
                 echo "<select class='form-control ";
                 if ($type == 'multichoice2') {
-                    echo "select2_2";
+                    echo "select2_3";
                 } else {
                     echo "select2";
                 }

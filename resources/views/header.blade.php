@@ -12,7 +12,7 @@
         @endif
     </span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>{{$short}}</b>Registration</span>
+    <span class="logo-lg"><b>{{$short}}</b> Registration</span>
   </a>
 
   <!-- Header Navbar -->

@@ -100,6 +100,13 @@
       });
     });
 
+    $(function () {
+      $(".select2_3").select2({
+          theme: "bootstrap",
+          maximumSelectionLength: 3
+      });
+    });
+
 
     var btnClassClick = function(e) {
         if ($("i", this).hasClass("fa-plus")) {
