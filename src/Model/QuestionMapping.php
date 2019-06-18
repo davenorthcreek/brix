@@ -253,7 +253,7 @@ class QuestionMapping extends ModelObject
                     //now render a select form input
                     echo "<select class='form-control select2' ";
                     //if ($mult) {
-                        echo "multiple='multiple'";
+                    //    echo "multiple='multiple'";
                     //}
                     echo " id='$label' data-placeholder='$visible' name='$label'";
                     echo " style='width: 100%;'";
