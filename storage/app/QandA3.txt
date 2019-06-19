@@ -24,7 +24,7 @@ brix00rf0096.A2	Text	referenceTitle	Reference Position
 brix00rf0096.A3	Text	referencePhone	Phone No:
 brix00rf0096.A4	Text	companyName Company
 brix00rf0096.A5	Text	candidateTitle	Your Position Held
-Section Reference2
+Section Reference 2
 brix00rf0103	multiple	recommender2	Reference 2
 brix00rf0103.A1	Text	referenceName	Reference Name
 brix00rf0103.A2	Text	referenceTitle	Reference Position
