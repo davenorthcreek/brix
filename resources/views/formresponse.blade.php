@@ -169,7 +169,7 @@
      var telInput = $('.my_phone_number'),
         errorMsg = $("#phone-error-msg"),
         validMsg = $("#phone-valid-msg");
-    if (telInput) {
+    if (telInput.length > 0) {
 
       var input = document.querySelector(".my_phone_number");
       window.intlTelInput(input, {
