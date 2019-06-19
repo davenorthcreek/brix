@@ -169,22 +169,23 @@
      var telInput = $('.my_phone_number'),
         errorMsg = $("#phone-error-msg"),
         validMsg = $("#phone-valid-msg");
+    if (telInput) {
 
       var input = document.querySelector(".my_phone_number");
       window.intlTelInput(input, {
          utilsScript: "{{asset ("/bower_components/intl-tel-input/build/js/utils.js") }}",
          initialCountry: "au",
          onlyCountries: ["au"],
-     });
+      });
 
-     var reset_phone = function() {
+      var reset_phone = function() {
          telInput.removeClass("error");
          errorMsg.addClass("hide");
          validMsg.addClass("hide");
-     }
+      }
 
-     // on blur: validate
-     telInput.blur(function() {
+      // on blur: validate
+      telInput.blur(function() {
       reset_phone();
       if ($.trim(telInput.val())) {
         var input = document.querySelector(".my_phone_number");
@@ -199,11 +200,11 @@
           errorMsg.removeClass("hide");
         }
       }
-    });
+     });
 
-    // on keyup / change flag: reset
-    telInput.on("keyup change", reset_phone);
-
+     // on keyup / change flag: reset
+     telInput.on("keyup change", reset_phone);
+    }
 
      $("input:radio[name='none*Preferred payment method[]']").change(function() {
          var rad = this.value;
