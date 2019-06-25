@@ -7,6 +7,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="https://civilform.com.au/wp-content/uploads/2019/05/icon.png" sizes="32x32" />
+  <link rel="icon" href="https://civilform.com.au/wp-content/uploads/2019/05/icon.png" sizes="192x192" />
+  <link rel="apple-touch-icon-precomposed" href="https://civilform.com.au/wp-content/uploads/2019/05/icon.png" />
+  <meta name="msapplication-TileImage" content="https://civilform.com.au/wp-content/uploads/2019/05/icon.png" />
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
