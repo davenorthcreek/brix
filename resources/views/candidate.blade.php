@@ -29,8 +29,7 @@
                     <h3>
                         Thank you for registering with {{$fullSource}}.<br>
                         Please ensure you email us a copy of your Passport and a copy of your White Card to
-                        <a href="mailto:{{$adminEmail}}">{{$adminEmail}}</a>.<br>
-                        You can download a timesheet via our website <a href="{{$homepage}}">{{$homepage}}</a>.
+                        <a href="mailto:{{$adminEmail}}">{{$adminEmail}}</a>.
                     </h3>
                     <?php $thecandidate->exportSummaryToHTML($form, $box_style) ?>
                 </div><!-- /.box-body -->
