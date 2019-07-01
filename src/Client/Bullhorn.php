@@ -207,11 +207,11 @@ class Bullhorn {
 	private function authorize($bullhornService, $httpClient, $servicesCredentials) {
 		$uri2 = $bullhornService->getAuthorizationUri();
 		$this->log_debug("Attempting a brix authorization");
-		$this->var_debug($uri2);
+		$this->var_debug($uri2->__toString());
 		$httpClient->setMaxRedirects(0);
 		$authResponse = $httpClient->retrieveResponse($uri2, '', [], 'GET');
 		$this->log_debug($authResponse);
-		$html_start = strpos($authResponse, '<!DOCTYPE html>');
+		$html_start = strpos($authResponse, '<html>');
 		$this->log_debug("html start set at ".$html_start);
 		$headers = $authResponse;
 		if ($html_start>2) {
