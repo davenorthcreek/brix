@@ -69,11 +69,11 @@ class Form extends ModelObject
 			while (($line = fgets($handle)) !== false) {
 				// process the line read.
 				//answerId first, then text value
-                $this->log_debug($line);
+                //$this->log_debug($line);
 				$elements = preg_split("/\s+/", $line);
 				$first = $elements[0];
                 $second = $elements[1];
-                $this->log_debug($first);
+                //$this->log_debug($first);
                 if ($first == "Section") {
                     if ($currentQ) {
                         $sections[$sectionCounter][] = $currentQ;

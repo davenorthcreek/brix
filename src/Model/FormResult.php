@@ -292,11 +292,11 @@ class FormResult extends ModelObject
                 /**************************** */
             $mult = $qmap->get("multipleAnswers"); //boolean
             $type = $qmap->get("type");
-            $this->log_debug("$theId $type");
+            //$this->log_debug("$theId $type");
             if ($type == "boolean") {
                 $theId = $qmap->getBestId();
                 if (array_key_exists($theId, $questionMaps)) {
-                    $this->log_debug("using $theId ".$qmap->get("WorldAppAnswerName"));
+                    //$this->log_debug("using $theId ".$qmap->get("WorldAppAnswerName"));
                     $sectionQs[$theId] = $qmap;
                 }
             } else if ($mult && !in_array($type, ['choice', 'List', 'multichoice', 'multichoice2', 'radio'])) {
@@ -304,12 +304,12 @@ class FormResult extends ModelObject
                 foreach ($qmap->get("answerMappings") as $q2) {
                     $theId = $q2->getBestId();
                     $sectionQs[$theId] = $q2;
-                    $this->log_debug("Setting answer $theId ".$q2->get("Value"));
+                    //$this->log_debug("Setting answer $theId ".$q2->get("Value"));
                 }
             } else {
                 $theId = $qmap->getBestId();
                 $sectionQs[$theId] = $qmap;
-                $this->log_debug("default case for $theId: ".$qmap->get("Value"));
+                //$this->log_debug("default case for $theId: ".$qmap->get("Value"));
             }
         }
         //store list of 'select all' checkboxes for javascript

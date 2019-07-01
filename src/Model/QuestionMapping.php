@@ -244,7 +244,7 @@ class QuestionMapping extends ModelObject
 
                 //may have to create configFile entry
                 if (!array_key_exists($file, $configs)) {
-                    $this->log_debug("looking up $file");
+                    //$this->log_debug("looking up $file");
                     $configs = $this->parse_option_file($file, $configs);
                 }
                 //must look up
