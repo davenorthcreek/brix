@@ -233,7 +233,7 @@ class FormResponseController extends Controller
             $data['box_style'] = "primary";
             $data['home']      = "https://www.brixprojects.com.au/";
             $data['homepage']  = "https://www.brixprojects.com.au/";
-        } else if (strcasecmp($source, "civil") == 0) {
+        } else if (strcasecmp($source, "civilform") == 0) {
             $data['fullSource'] = 'CivilForm';
             $data['short']      = 'CF';
             $data['adminEmail'] = 'admin@civilform.com.au';
