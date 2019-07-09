@@ -236,7 +236,7 @@ class FormResponseController extends Controller
         } else if (strcasecmp($source, "civilform") == 0) {
             $data['fullSource'] = 'CivilForm';
             $data['short']      = 'CF';
-            $data['adminEmail'] = 'admin@civilform.com.au';
+            $data['adminEmail'] = 'careers@civilform.com.au';
             $data['colour']    = "blue-light";
             $data['box_style'] = "warning";
             $data['home']      = "https://www.civilform.com.au";
