@@ -600,7 +600,7 @@ class Bullhorn {
 		$put_url = $this->base_url."/entity/Candidate";
 		$put_uri = $this->service->getRestUri($put_url, $this->session_key);
         $this->log_debug($put_uri->getAbsoluteUri());
-		$result = $this->httpClient->retrieveResponse($put_uri, $cand_data, [], 'PUT');
+		$result = $this->httpClient->retrieveResponse($put_uri, $cand_data, ['Content-Type' => 'Application/JSON'], 'PUT');
 		$decoded = $this->extract_json($result);
 		$this->log_debug("Create new candidate has response: ");
 		$this->var_debug($decoded);
@@ -621,7 +621,7 @@ class Bullhorn {
 		$post_url = $this->base_url."entity/Candidate/".$id;
 		$post_uri = $this->service->getRestUri($post_url, $this->session_key);
         $this->log_debug($post_uri->getAbsoluteUri());
-		$result = $this->httpClient->retrieveResponse($post_uri, $cand_data, [], 'POST');
+		$result = $this->httpClient->retrieveResponse($post_uri, $cand_data, ['Content-Type' => 'Application/JSON'], 'POST');
 		$decoded = $this->extract_json($result);
 		$this->log_debug("Update $id has response: ");
 		$this->var_debug($decoded);
@@ -658,7 +658,7 @@ class Bullhorn {
 		$this->var_debug($body);
 		$subm_ref_url = $this->base_url."entity/CandidateReference";
 		$subm_ref_uri = $this->service->getRestUri($subm_ref_url, $this->session_key);
-		$subm_ref = $this->httpClient->retrieveResponse($subm_ref_uri, json_encode($body), [], 'PUT');
+		$subm_ref = $this->httpClient->retrieveResponse($subm_ref_uri, json_encode($body), ['Content-Type' => 'Application/JSON'], 'PUT');
 		$subm_ref_decoded = $this->extract_json($subm_ref);
 		$this->log_debug("Submitted candidate reference: ");
 		$this->var_debug($subm_ref_decoded);
@@ -726,7 +726,7 @@ class Bullhorn {
 		$body = ['customObject1s'=>$co_array];
 		$this->log_debug("Submitting this data as a custom object");
 		$this->var_debug($body);
-		$subm_co = $this->httpClient->retrieveResponse($subm_co_uri, json_encode($body), [], 'POST');
+		$subm_co = $this->httpClient->retrieveResponse($subm_co_uri, json_encode($body), ['Content-Type' => 'Application/JSON'], 'POST');
 		$subm_co_decoded = $this->extract_json($subm_co);
 		$this->log_debug("Submitted customObject1: ");
 		$this->var_debug($subm_co_decoded);
@@ -755,7 +755,7 @@ class Bullhorn {
 		$body = json_encode($note);
 		$this->log_debug($body);
 		$this->log_debug("Submitting this data as a note");
-		$subm_note = $this->httpClient->retrieveResponse($subm_note_uri, $body, [], 'PUT');
+		$subm_note = $this->httpClient->retrieveResponse($subm_note_uri, $body, ['Content-Type' => 'Application/JSON'], 'PUT');
 		$subm_note_decoded = $this->extract_json($subm_note);
 		$this->log_debug("Submitted Note");
 		$this->var_debug($subm_note_decoded);
@@ -791,7 +791,7 @@ class Bullhorn {
 
 			$subm_sk_uri = $this->service->getRestUri($subm_sk_url, $this->session_key);
 
-			$subm_sk = $this->httpClient->retrieveResponse($subm_sk_uri, '', [], 'PUT');
+			$subm_sk = $this->httpClient->retrieveResponse($subm_sk_uri, '', ['Content-Type' => 'Application/JSON'], 'PUT');
 			$subm_sk_decoded = $this->extract_json($subm_sk);
 			$this->log_debug("Submitted primarySkills: ");
 			$this->var_debug($subm_sk_decoded);
@@ -820,7 +820,7 @@ class Bullhorn {
             }
 			$subm_sk_uri = $this->service->getRestUri($subm_sk_url, $this->session_key);
 
-			$subm_sk = $this->httpClient->retrieveResponse($subm_sk_uri, '', [], 'PUT');
+			$subm_sk = $this->httpClient->retrieveResponse($subm_sk_uri, '', ['Content-Type' => 'Application/JSON'], 'PUT');
 			$subm_sk_decoded = $this->extract_json($subm_sk);
 			$this->log_debug("Submitted categories: ");
 			$this->var_debug($subm_sk_decoded);
@@ -901,7 +901,7 @@ class Bullhorn {
 				'description'=>'associated file',
 				'type'=>$type
 				]),
-			[],
+			['Content-Type' => 'Application/JSON'],
 			'PUT');
 		$subm_file_decoded = $this->extract_json($subm_file);
 		return $subm_file_decoded;
