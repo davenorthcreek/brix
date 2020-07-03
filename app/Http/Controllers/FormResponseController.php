@@ -36,9 +36,10 @@ class FormResponseController extends Controller
         $data = [];
         $data['gtm'] = env('GTM_ID')?env('GTM_ID'):'GTM-PHVNHQ8'; //default to Brix
         $recaptcha = new \ReCaptcha\ReCaptcha(env("CAPTCHA_SECRET"));
-        $resp = $recaptcha->setExpectedHostname(env("URL"))
+        $resp = $recaptcha->setExpectedHostname(env("HOSTNAME"))
             ->setScoreThreshold(0.5)
             ->verify($recaptcha_token, $_SERVER['REMOTE_ADDR']);
+        Log::debug($resp->toArray());
         if (!$resp->isSuccess()) {
             $subform = 1;
         } else {
