@@ -65,7 +65,14 @@
             @endfor
             <div class="box box-{{$box_style}}">
                 <div class="box-header with-border">
-                    <button type="submit" class="btn btn-info" id="confirmV">{{$next}}</button>
+                    <button
+                        type="submit"
+                        class="btn btn-info g-recaptcha"
+                        data-sitekey="{{env("CAPTCHA_SITEKEY")}}" 
+                        data-callback='onSubmit'
+                        id="confirmV">
+                        {{$next}}
+                    </button>
                     <button role="button" class="btn btn-mini btn-{{$box_style}} pull-right btn-click-action masterbutton"
                         data-widget="collapseAll" data-toggle="tooltip" title="Collapse/Expand All">
                         <i class='fa fa-plus'></i>
@@ -85,6 +92,14 @@
 <script src={{ asset("/bower_components/select2/dist/js/select2.full.min.js") }}></script>
 <!-- Intl-Tel-Input -->
 <script src={{ asset("/bower_components/intl-tel-input/build/js/intlTelInput.min.js") }}></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+
+ <script type = "text/text/javascript">
+   function onSubmit(token) {
+     document.getElementById("confirmValues").submit();
+   }
+ </script>
 
 <script type="text/javascript">
     $(function () {

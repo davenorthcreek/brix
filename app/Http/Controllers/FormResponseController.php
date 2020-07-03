@@ -28,13 +28,25 @@ class FormResponseController extends Controller
     }
 
     public function index(Request $request, $source, $subform=1) {
+        $recaptcha_token = $request->input("g-recaptcha-response");
+
+        //have to define $candidate outsite of the if block, so pull from request
+        $candidate = Cache::get($request->input("email"));
+
         $data = [];
         $data['gtm'] = env('GTM_ID')?env('GTM_ID'):'GTM-PHVNHQ8'; //default to Brix
-        //load candidate from cache if we've had this candidate before
-        $candidate = Cache::get($request->input("email"));
-        if ($candidate) {
-            $data['candidate'] = $candidate;
+        $recaptcha = new \ReCaptcha\ReCaptcha(env("CAPTCHA_SECRET"));
+        $resp = $recaptcha->setExpectedHostname(env("URL"))
+            ->setScoreThreshold(0.5)
+            ->verify($recaptcha_token, $_SERVER['REMOTE_ADDR']);
+        if (!$resp->isSuccess()) {
+            $subform = 1;
+        } else {
+            if ($candidate) {
+                $data['candidate'] = $candidate;
+            }
         }
+        //load candidate from cache if we've had this candidate before
         if ($subform == 1) { //start of process
             //set up exceptions for complex html
             $data['exceptions'] = $this->setExceptions($candidate);
